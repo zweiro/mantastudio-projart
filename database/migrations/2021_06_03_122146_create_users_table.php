@@ -18,10 +18,12 @@ class CreateUsersTable extends Migration
             $table->string('username')->unique();
             $table->string('email')->unique();
             $table->string('password');
-            $table->foreign('canton_id')->references('id')->on('cantons')
-                    ->onDelete('restrict')
-                    ->onUpdate('restrict');
+            $table->foreignId('canton_id')->constrained();
             $table->boolean('is_admin');
+            $table->rememberToken();
+            $table->foreignId('current_team_id')->nullable();
+            $table->string('profile_photo_path', 2048)->nullable();
+            $table->timestamps();
         });
     }
 
@@ -32,6 +34,10 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropForeign(['canton_id']);
+        });
+
         Schema::dropIfExists('users');
     }
 }
