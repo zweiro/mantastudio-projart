@@ -15,6 +15,7 @@ class ville extends Model
 
     protected $fillable = [
         'name',
+        'abbreviation',
         'canton_id'
     ];
 
