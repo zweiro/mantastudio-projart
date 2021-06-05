@@ -24,7 +24,8 @@ class CreateRewardsTable extends Migration
             $table->string('file_url');  
             $table->timestamp('validity_date');
             $table->unsignedBigInteger('question_category_id');
-            $table->foreignId('city_id')->nullable()->constrained();
+            $table->unsignedBigInteger('city_id');
+            $table->foreign('city_id')->nullable()->on('id')->references('cities');
             $table->foreign('question_category_id')->nullable()->on('id')->references('question_categories'); 
         });
     }
