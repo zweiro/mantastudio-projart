@@ -22,7 +22,7 @@ class CreateRewardsTable extends Migration
             $table->string('text');
             $table->string('image_url');
             $table->string('file_url');  
-            $table->timestamps('validity_date');
+            $table->timestamp('validity_date');
             $table->foreignId('city_id')->nullable()->constrained();
             $table->foreignId('question_category_id')->nullable()->constrained(); 
         });
