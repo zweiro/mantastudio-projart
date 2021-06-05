@@ -4,6 +4,7 @@
     </IfModule>
 
     RewriteEngine On
+    RewriteBase /mantastudio
 
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
