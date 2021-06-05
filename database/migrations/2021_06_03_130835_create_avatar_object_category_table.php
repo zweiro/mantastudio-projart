@@ -13,7 +13,7 @@ class CreateAvatarObjectCategoryTable extends Migration
      */
     public function up()
     {
-        Schema::create('avatar_object_category', function (Blueprint $table) {
+        Schema::create('avatar_object_categories', function (Blueprint $table) {
             $table->id();
             $table->string('name');
         });
@@ -26,6 +26,6 @@ class CreateAvatarObjectCategoryTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('avatar_object_category');
+        Schema::dropIfExists('avatar_object_categories');
     }
 }

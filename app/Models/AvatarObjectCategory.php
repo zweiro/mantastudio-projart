@@ -9,6 +9,8 @@ class AvatarObjectCategory extends Model
 {
     use HasFactory;
 
+    public $table = 'avatar_object_categories';
+
     public function badge() {
         return $this->belongsTo(Badge::class);
     }
