@@ -15,9 +15,9 @@ class CreateFriendUserTable extends Migration
     {
         Schema::create('friend_user', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained();
             $table->unsignedBigInteger('friend_id');
             $table->foreign('friend_id')->references('id')->on('users');
-            $table->foreignId('user_id')->constrained();
         });
     }
 
