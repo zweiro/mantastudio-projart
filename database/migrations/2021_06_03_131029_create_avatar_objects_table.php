@@ -20,9 +20,10 @@ class CreateAvatarObjectsTable extends Migration
             $table->string('image_url');
             $table->unsignedBigInteger('avatar_object_category_id');
             $table->unsignedBigInteger('city_id');
-            $table->foreign('avatar_object_category_id')->on('id')->references('avatar_object_categories');
+
+            $table->foreign('avatar_object_category_id')->references('id')->on('avatar_object_categories');
             $table->foreignId('badge_id')->nullable()->constrained();
-            $table->foreign('city_id')->nullable()->on('id')->references('cities');
+            $table->foreign('city_id')->nullable()->references('id')->on('cities');
         });
     }
 
