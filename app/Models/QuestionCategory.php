@@ -7,7 +7,7 @@ use App\Models\Reward;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class categorieQuestion extends Model
+class QuestionCategory extends Model
 {
     use HasFactory;
 

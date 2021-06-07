@@ -14,9 +14,9 @@ class CreateQuestionCategoriesTable extends Migration
     public function up()
     {
         Schema::create('question_categories', function (Blueprint $table) {
-            $table->id();
+            $table->id()->from(1);
             $table->string('name');
-            $table->string('image_url');  
+            $table->string('image_url');
         });
     }
 
