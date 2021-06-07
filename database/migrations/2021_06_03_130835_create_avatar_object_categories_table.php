@@ -14,7 +14,7 @@ class CreateAvatarObjectCategoriesTable extends Migration
     public function up()
     {
         Schema::create('avatar_object_categories', function (Blueprint $table) {
-            $table->id();
+            $table->id()->from(1);
             $table->string('name');
         });
     }
