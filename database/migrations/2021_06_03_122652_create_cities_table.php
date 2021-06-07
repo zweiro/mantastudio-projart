@@ -14,9 +14,8 @@ class CreateCitiesTable extends Migration
     public function up()
     {
         Schema::create('cities', function (Blueprint $table) {
-            $table->id();
+            $table->id()->from(1);
             $table->string('name')->unique();
-            $table->string('abbreviation');
             $table->foreignId('canton_id')->constrained();
         });
     }

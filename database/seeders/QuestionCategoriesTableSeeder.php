@@ -20,6 +20,6 @@ class QuestionCategoriesTableSeeder extends Seeder
         DB::table('question_categories')->insert(['name' => 'Histoire', 'image_url' => 'https://via.placeholder.com/300.png/09f/fff%20C/O%20https://placeholder.com/']);
         DB::table('question_categories')->insert(['name' => 'Architecture', 'image_url' => 'https://via.placeholder.com/300.png/09f/fff%20C/O%20https://placeholder.com/']);
         DB::table('question_categories')->insert(['name' => 'Sports', 'image_url' => 'https://via.placeholder.com/300.png/09f/fff%20C/O%20https://placeholder.com/']);
-        DB::table('question_categories')->insert(['name' => 'Personnalité Publique', 'image_url' => 'https://via.placeholder.com/300.png/09f/fff%20C/O%20https://placeholder.com/']);
+        DB::table('question_categories')->insert(['name' => 'Personnalités Publiques', 'image_url' => 'https://via.placeholder.com/300.png/09f/fff%20C/O%20https://placeholder.com/']);
     }
 }
