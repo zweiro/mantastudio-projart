@@ -23,7 +23,7 @@ class Badge extends Model
         return $this->hasMany(AvatarObject::class);
     }
 
-    public function AvatarObject() {
+    public function answers() {
         return $this->hasMany(Answer::class);
     }
 }

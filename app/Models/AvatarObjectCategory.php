@@ -11,10 +11,6 @@ class AvatarObjectCategory extends Model
 
     public $table = 'avatar_object_categories';
 
-    public function badge() {
-        return $this->belongsTo(Badge::class);
-    }
-
     public function avatarObject() {
         return $this->hasMany(AvatarObject::class);
     }

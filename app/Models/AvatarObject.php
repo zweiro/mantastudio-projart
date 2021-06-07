@@ -14,7 +14,7 @@ class AvatarObject extends Model
     }
 
     public function badge() {
-        return $this->hasOne(User::class);
+        return $this->belongsTo(Badge::class);
     }
 
     public function avatarObjectCategory() {
