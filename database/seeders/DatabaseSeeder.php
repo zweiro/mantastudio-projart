@@ -21,5 +21,6 @@ class DatabaseSeeder extends Seeder
         $this->call(AvatarObjectsTableSeeder::class);
         $this->call(CitiesTableSeeder::class);
         $this->call(QuestionsTableSeeder::class);
+        $this->call(RewardsTableSeeder::class);
     }
 }
