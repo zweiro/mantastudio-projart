@@ -16,6 +16,7 @@ class CreateCantonsTable extends Migration
         Schema::create('cantons', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
+            $table->string('abbreviation');
         });
     }
 

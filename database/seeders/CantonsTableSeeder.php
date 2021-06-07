@@ -15,12 +15,30 @@ class CantonsTableSeeder extends Seeder
     public function run()
     {
         DB::table('cantons')->delete();
-        DB::table('cantons')->insert(['name' => 'Vaud']);
-        DB::table('cantons')->insert(['name' => 'Genève']);
-        DB::table('cantons')->insert(['name' => 'Jura']);
-        DB::table('cantons')->insert(['name' => 'Valais']);
-        DB::table('cantons')->insert(['name' => 'Fribourg']);
-        DB::table('cantons')->insert(['name' => 'Neuchâtel']);
+        DB::table('cantons')->insert([
+            'name' => 'Vaud',
+            'abbreviation' => 'VD'
+            ]);
+        DB::table('cantons')->insert([
+            'name' => 'Genève',
+            'abbreviation' => 'GE'
+            ]);
+        DB::table('cantons')->insert([
+            'name' => 'Jura',
+            'abbreviation' => 'JU'
+            ]);
+        DB::table('cantons')->insert([
+            'name' => 'Valais',
+            'abbreviation' => 'VS'
+            ]);
+        DB::table('cantons')->insert([
+            'name' => 'Fribourg',
+            'abbreviation' => 'FR'
+            ]);
+        DB::table('cantons')->insert([
+            'name' => 'Neuchâtel',
+            'abbreviation' => 'NE'
+            ]);
 
     }
 }

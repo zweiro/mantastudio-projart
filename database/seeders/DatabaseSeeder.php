@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call(BadgesTableSeeder::class);
         $this->call(AvatarObjectCategoriesTableSeeder::class);
         $this->call(AvatarObjectsTableSeeder::class);
-        
+        $this->call(CitiesTableSeeder::class);
+        $this->call(QuestionsTableSeeder::class);
     }
 }
