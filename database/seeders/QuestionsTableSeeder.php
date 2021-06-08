@@ -13,7 +13,7 @@ class QuestionsTableSeeder extends SpreadsheetSeeder
     public function run()
     {
         $this->file = '/database/seeders/questions.xlsx';
-        $this->worksheetTableMapping = ['Questions' => 'questions'];
+        $this->worksheetTableMapping = ['Questions' => 'questions', 'Answers' => 'question_answers'];
         
         parent::run();
     }
