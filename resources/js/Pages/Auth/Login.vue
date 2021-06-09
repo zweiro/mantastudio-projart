@@ -1,9 +1,8 @@
 <template>
     <div>
+        <manta-header>
+        </manta-header>
         <jet-authentication-card>
-            <template #logo>
-                <jet-authentication-card-logo />
-            </template>
 
             <jet-validation-errors class="mb-4" />
 
@@ -54,6 +53,7 @@
     import JetLabel from '@/Jetstream/Label'
     import JetValidationErrors from '@/Jetstream/ValidationErrors'
     import MantaMenu from '../../Mantastudio/BottomMenu'
+    import MantaHeader from '../../Mantastudio/MainHeader'
 
     export default {
         components: {
@@ -64,7 +64,8 @@
             JetCheckbox,
             JetLabel,
             JetValidationErrors,
-            MantaMenu
+            MantaMenu,
+            MantaHeader
         },
 
         props: {
