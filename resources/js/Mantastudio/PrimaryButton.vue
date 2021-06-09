@@ -21,6 +21,8 @@
     .pushed:active {
     background: linear-gradient(90deg, rgba(106,174,190,1) 0%, rgba(243,150,161,1) 100%);
     box-shadow: 0px 2px 2px #c0c0c0;
-    transform: translateY(2px);
-    } 
+    transform: translateX(-50%);
+    }
+
+    
 </style>
