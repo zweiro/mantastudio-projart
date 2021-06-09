@@ -7,7 +7,7 @@
         <jet-validation-errors class="mb-4" />
 
         <form @submit.prevent="submit">
-            <div>
+            <!-- <div>
                 <jet-label for="username" value="Username" />
                 <jet-input id="username" type="text" class="mt-1 block w-full" v-model="form.username" required autofocus autocomplete="username" />
             </div>
@@ -16,6 +16,7 @@
                 <jet-label for="email" value="Email" />
                 <jet-input id="email" type="email" class="mt-1 block w-full" v-model="form.email" required />
             </div>
+
 
             <div class="mt-4">
                 <jet-label for="password" value="Password" />
@@ -37,9 +38,18 @@
                         </div>
                     </div>
                 </jet-label>
-            </div>
+            </div> -->
+            <manta-form-input name="username" type="text">
+                Pseudo
+            </manta-form-input>
+            <manta-form-input name="email" type="email">
+                Email
+            </manta-form-input>
+            <manta-form-input name="password" type="password">
+                Mot-de-passe
+            </manta-form-input>
 
-            <div class="flex items-center justify-end mt-4">
+            <!-- <div class="flex items-center justify-end mt-4">
                 <inertia-link :href="route('login')" class="underline text-sm text-gray-600 hover:text-gray-900">
                     Déjà inscrit ?
                 </inertia-link>
@@ -47,13 +57,14 @@
                 <jet-button class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                     Register
                 </jet-button>
-            </div>
-        </form>
-        <div class="relative h-20">
+            </div> -->
+            <div class="relative h-20">
             <manta-primary-button class="m-0 absolute top-2/4 left-2/4 transform -translate-x-2/4 -translate-y-2/4">
                 Suivant
             </manta-primary-button>
         </div>
+        </form>
+        
     </jet-authentication-card>
 </template>
 
@@ -66,6 +77,7 @@
     import JetLabel from '@/Jetstream/Label'
     import JetValidationErrors from '@/Jetstream/ValidationErrors'
     import MantaPrimaryButton from '../../Mantastudio/PrimaryButton'
+    import MantaFormInput from '../../Mantastudio/FormInput'
 
     export default {
         components: {
@@ -76,7 +88,8 @@
             JetCheckbox,
             JetLabel,
             JetValidationErrors,
-            MantaPrimaryButton
+            MantaPrimaryButton,
+            MantaFormInput
         },
 
         data() {
