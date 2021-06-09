@@ -1,1 +1,5 @@
 *.sqlite*
+/public/hot
+/public/storage
+/public/js/*.js
+/public/css/*.css

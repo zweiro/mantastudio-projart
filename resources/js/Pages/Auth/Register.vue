@@ -39,15 +39,17 @@
                     </div>
                 </jet-label>
             </div> -->
-            <manta-form-input name="username" type="text">
-                Pseudo
+            <manta-form-input name="username" type="text" label="Pseudo">
             </manta-form-input>
-            <manta-form-input name="email" type="email">
-                Email
+            <manta-form-input name="email" type="email" label="Email">
             </manta-form-input>
-            <manta-form-input name="password" type="password">
-                Mot-de-passe
+            <manta-form-input name="password" type="password" label="Mot-de-passe">
             </manta-form-input>
+            <manta-form-select label="Canton" name="canton">
+                <option value="">Choisir votre canton</option>
+                <option value="dog">Vaud</option>
+                <option value="dog">Genève</option>
+            </manta-form-select>
 
             <!-- <div class="flex items-center justify-end mt-4">
                 <inertia-link :href="route('login')" class="underline text-sm text-gray-600 hover:text-gray-900">
@@ -78,6 +80,7 @@
     import JetValidationErrors from '@/Jetstream/ValidationErrors'
     import MantaPrimaryButton from '../../Mantastudio/PrimaryButton'
     import MantaFormInput from '../../Mantastudio/FormInput'
+    import MantaFormSelect from '../../Mantastudio/FormSelect'
 
     export default {
         components: {
@@ -89,7 +92,8 @@
             JetLabel,
             JetValidationErrors,
             MantaPrimaryButton,
-            MantaFormInput
+            MantaFormInput,
+            MantaFormSelect
         },
 
         data() {
