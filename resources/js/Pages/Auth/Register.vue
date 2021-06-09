@@ -41,7 +41,7 @@
 
             <div class="flex items-center justify-end mt-4">
                 <inertia-link :href="route('login')" class="underline text-sm text-gray-600 hover:text-gray-900">
-                    Already registered?
+                    Déjà inscrit ?
                 </inertia-link>
 
                 <jet-button class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
@@ -49,6 +49,11 @@
                 </jet-button>
             </div>
         </form>
+        <div class="relative h-20">
+            <manta-primary-button class="m-0 absolute top-2/4 left-2/4 transform -translate-x-2/4 -translate-y-2/4">
+                Suivant
+            </manta-primary-button>
+        </div>
     </jet-authentication-card>
 </template>
 
@@ -60,6 +65,7 @@
     import JetCheckbox from "@/Jetstream/Checkbox";
     import JetLabel from '@/Jetstream/Label'
     import JetValidationErrors from '@/Jetstream/ValidationErrors'
+    import MantaPrimaryButton from '../../Mantastudio/PrimaryButton'
 
     export default {
         components: {
@@ -69,7 +75,8 @@
             JetInput,
             JetCheckbox,
             JetLabel,
-            JetValidationErrors
+            JetValidationErrors,
+            MantaPrimaryButton
         },
 
         data() {
@@ -93,3 +100,4 @@
         }
     }
 </script>
+
