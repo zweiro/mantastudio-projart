@@ -43,6 +43,10 @@
             </manta-form-input>
             <manta-form-input name="email" type="email" label="Email">
             </manta-form-input>
+            <manta-form-input name="search" type="search" label="Search">
+            </manta-form-input>
+            <manta-form-search name="search" placeholder="Rechercher un ami">
+            </manta-form-search>
             <manta-form-input name="password" type="password" label="Mot-de-passe">
             </manta-form-input>
             <manta-form-select label="Canton" name="canton">
@@ -81,6 +85,7 @@
     import MantaPrimaryButton from '../../Mantastudio/PrimaryButton'
     import MantaFormInput from '../../Mantastudio/FormInput'
     import MantaFormSelect from '../../Mantastudio/FormSelect'
+    import MantaFormSearch from '../../Mantastudio/FormSearch'
 
     export default {
         components: {
@@ -93,7 +98,8 @@
             JetValidationErrors,
             MantaPrimaryButton,
             MantaFormInput,
-            MantaFormSelect
+            MantaFormSelect,
+            MantaFormSearch
         },
 
         data() {
