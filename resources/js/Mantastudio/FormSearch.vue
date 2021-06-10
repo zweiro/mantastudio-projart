@@ -29,4 +29,5 @@ export default {
             box-shadow: none;
         }
 
+    button:focus { outline:0 !important; }
 </style>
