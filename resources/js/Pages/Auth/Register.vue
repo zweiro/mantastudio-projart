@@ -7,63 +7,19 @@
         <jet-validation-errors class="mb-4" />
 
         <form @submit.prevent="submit">
-            <!-- <div>
-                <jet-label for="username" value="Username" />
-                <jet-input id="username" type="text" class="mt-1 block w-full" v-model="form.username" required autofocus autocomplete="username" />
-            </div>
-
-            <div class="mt-4">
-                <jet-label for="email" value="Email" />
-                <jet-input id="email" type="email" class="mt-1 block w-full" v-model="form.email" required />
-            </div>
-
-
-            <div class="mt-4">
-                <jet-label for="password" value="Password" />
-                <jet-input id="password" type="password" class="mt-1 block w-full" v-model="form.password" required autocomplete="new-password" />
-            </div>
-
-            <div class="mt-4">
-                <jet-label for="password_confirmation" value="Confirm Password" />
-                <jet-input id="password_confirmation" type="password" class="mt-1 block w-full" v-model="form.password_confirmation" required autocomplete="new-password" />
-            </div>
-
-            <div class="mt-4" v-if="$page.props.jetstream.hasTermsAndPrivacyPolicyFeature">
-                <jet-label for="terms">
-                    <div class="flex items-center">
-                        <jet-checkbox name="terms" id="terms" v-model:checked="form.terms" />
-
-                        <div class="ml-2">
-                            I agree to the <a target="_blank" :href="route('terms.show')" class="underline text-sm text-gray-600 hover:text-gray-900">Terms of Service</a> and <a target="_blank" :href="route('policy.show')" class="underline text-sm text-gray-600 hover:text-gray-900">Privacy Policy</a>
-                        </div>
-                    </div>
-                </jet-label>
-            </div> -->
-            <manta-form-input name="username" type="text" label="Pseudo">
+            <manta-form-input name="username" type="text" label="Pseudo" v-model="form.username">
             </manta-form-input>
-            <manta-form-input name="email" type="email" label="Email">
+            <manta-form-input name="email" type="email" label="Email" v-model="form.email">
             </manta-form-input>
-            <manta-form-input name="search" type="search" label="Search">
+            <manta-form-input name="password" type="password" label="Mot de passe" v-model="form.password">
             </manta-form-input>
-            <manta-form-search name="search" placeholder="Rechercher un ami">
-            </manta-form-search>
-            <manta-form-input name="password" type="password" label="Mot-de-passe">
+            <manta-form-input name="password_confirmation" type="password" label="Confirmation" v-model="form.password_confirmation">
             </manta-form-input>
-            <manta-form-select label="Canton" name="canton">
+            <manta-form-select label="Canton" name="canton_id">
                 <option value="">Choisir votre canton</option>
                 <option value="dog">Vaud</option>
                 <option value="dog">Genève</option>
             </manta-form-select>
-
-            <!-- <div class="flex items-center justify-end mt-4">
-                <inertia-link :href="route('login')" class="underline text-sm text-gray-600 hover:text-gray-900">
-                    Déjà inscrit ?
-                </inertia-link>
-
-                <jet-button class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Register
-                </jet-button>
-            </div> -->
             <div class="relative h-20">
             <manta-primary-button class="m-0 absolute top-2/4 left-2/4 transform -translate-x-2/4 -translate-y-2/4">
                 Suivant
@@ -110,6 +66,7 @@
                     password: '',
                     password_confirmation: '',
                     terms: false,
+                    canton_id: 1
                 })
             }
         },
