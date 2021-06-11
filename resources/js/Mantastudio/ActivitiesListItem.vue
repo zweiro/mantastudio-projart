@@ -11,7 +11,6 @@ export default {
     props: {
         activity: String,
         avatar: String,
-        username: String,
         date: String
     },
     setup(props) {  
