@@ -1,7 +1,5 @@
 <template>
     <div>
-        <manta-header>
-        </manta-header>
         <jet-authentication-card>
 
             <jet-validation-errors class="mb-4" />
@@ -39,8 +37,6 @@
                 </div>
             </form>
         </jet-authentication-card>
-        <manta-menu>
-        </manta-menu>
     </div>
 </template>
 
@@ -54,8 +50,10 @@
     import JetValidationErrors from '@/Jetstream/ValidationErrors'
     import MantaMenu from '../../Mantastudio/BottomMenu'
     import MantaHeader from '../../Mantastudio/MainHeader'
+    import Layout from '../../Layouts/PublicLayout.vue'
 
     export default {
+        layout: Layout,
         components: {
             JetAuthenticationCard,
             JetAuthenticationCardLogo,

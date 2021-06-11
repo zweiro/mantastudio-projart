@@ -11,9 +11,6 @@
                 <slot></slot>
             </main>
         </div>
-        <manta-menu>
-
-        </manta-menu>
     </div>
 </template>
 
@@ -24,8 +21,7 @@
     import JetDropdownLink from '@/Jetstream/DropdownLink'
     import JetNavLink from '@/Jetstream/NavLink'
     import JetResponsiveNavLink from '@/Jetstream/ResponsiveNavLink'
-    import MantaHeader from '../Mantastudio/MainHeader'
-    import MantaMenu from '../Mantastudio/BottomMenu'
+    import MantaHeader from '../Mantastudio/PublicHeader'
 
     export default {
         components: {
@@ -36,7 +32,6 @@
             JetNavLink,
             JetResponsiveNavLink,
             MantaHeader,
-            MantaMenu,
         },
         data() {
             return {
