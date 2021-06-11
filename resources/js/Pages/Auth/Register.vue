@@ -4,7 +4,7 @@
         <jet-validation-errors class="mb-4" />
 
         <form @submit.prevent="submit">
-            <manta-form-input name="username" type="text" label="Pseudo" v-model="form.username">
+            <manta-form-input name="username" type="text" label="Nom d'utilisateur" v-model="form.username">
             </manta-form-input>
             <manta-form-input name="email" type="email" label="Email" v-model="form.email">
             </manta-form-input>
