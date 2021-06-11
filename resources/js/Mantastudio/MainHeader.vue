@@ -1,5 +1,5 @@
 <template>
-  <ul class="w-full flex items-center justify-between sm:justify-between fixed top-0 h-20 border-t-2 border-gray-500 px-5 sm:px-10">
+  <ul class="w-full flex items-center justify-between sm:justify-between fixed top-0 h-20 border-t-2 border-gray-500 px-5 sm:px-10 mantacolor">
         <li>
             <span v-if="notiftoread" class="absolute h-3 w-3">
                 <span id="animate-notif" class="notif left-4 animate-ping absolute inline-flex h-3 w-3 rounded-full bg-purple-400 opacity-75"></span>
@@ -44,5 +44,8 @@ export default {
     }
     .notif {
         background-color: #6AAEBE;
+    }
+    .mantacolor {
+        background-color: #FEF9F7;
     }
 </style>

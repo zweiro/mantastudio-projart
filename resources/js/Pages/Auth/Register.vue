@@ -1,9 +1,6 @@
 <template>
-    <jet-authentication-card>
-        <template #logo>
-            <jet-authentication-card-logo />
-        </template>
-
+    
+    <jet-authentication-card>   
         <jet-validation-errors class="mb-4" />
 
         <form @submit.prevent="submit">
@@ -43,8 +40,10 @@
     import MantaFormSearch from '../../Mantastudio/FormSearch'
     import { computed } from 'vue'
     import { usePage } from '@inertiajs/inertia-vue3'
+    import Layout from '../../Layouts/PublicLayout.vue'
 
     export default {
+        layout: Layout,
         setup(props) {
             const cantons = usePage().props.value.cantons;
             return { cantons }
