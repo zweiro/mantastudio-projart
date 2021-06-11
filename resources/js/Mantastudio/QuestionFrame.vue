@@ -1,5 +1,5 @@
 <template>
-    <div class="grayBackground h-44">
+    <div class="border-4 questionFrame h-44">
         <div class="pt-2 text-center text-sm font-bold">
             {{currentNumber}}/{{totalNumber}}
         </div>
@@ -29,8 +29,8 @@ export default {
 </script>
 
 <style scoped>
-    .grayBackground {
-        background-color: #F0EFF0;
+    .questionFrame {
+        border-color: #F396A1;
     }
 
     .grayText {
