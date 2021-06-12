@@ -9,61 +9,38 @@
             </div>
 
             <form @submit.prevent="submit">
-                <div>
-                    <jet-label for="email" value="Email" />
-                    <jet-input id="email" type="email" class="mt-1 block w-full" v-model="form.email" required autofocus />
-                </div>
-
-                <div class="mt-4">
-                    <jet-label for="password" value="Password" />
-                    <jet-input id="password" type="password" class="mt-1 block w-full" v-model="form.password" required autocomplete="current-password" />
-                </div>
-
-                <div class="block mt-4">
-                    <label class="flex items-center">
-                        <jet-checkbox name="remember" v-model:checked="form.remember" />
-                        <span class="ml-2 text-sm text-gray-600">Remember me</span>
-                    </label>
-                </div>
-
-                <div class="flex items-center justify-end mt-4">
-                    <inertia-link v-if="canResetPassword" :href="route('password.request')" class="underline text-sm text-gray-600 hover:text-gray-900">
-                        Forgot your password?
-                    </inertia-link>
-
-                    <jet-button class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                        Log in
-                    </jet-button>
-                </div>
-            </form>
+            <manta-form-input name="email" type="email" label="Email" v-model="form.email">
+            </manta-form-input>
+            <manta-form-input name="password" type="password" label="Mot de passe" v-model="form.password">
+            </manta-form-input>
+            <div class="relative h-20">
+                <manta-primary-button class="m-0 absolute top-2/4 left-2/4 transform -translate-x-2/4 -translate-y-2/4">
+                    Me connecter
+                </manta-primary-button>
+            </div>
+        </form>
         </jet-authentication-card>
     </div>
 </template>
 
 <script>
     import JetAuthenticationCard from '@/Jetstream/AuthenticationCard'
-    import JetAuthenticationCardLogo from '@/Jetstream/AuthenticationCardLogo'
-    import JetButton from '@/Jetstream/Button'
-    import JetInput from '@/Jetstream/Input'
-    import JetCheckbox from '@/Jetstream/Checkbox'
-    import JetLabel from '@/Jetstream/Label'
     import JetValidationErrors from '@/Jetstream/ValidationErrors'
-    import MantaMenu from '../../Mantastudio/BottomMenu'
-    import MantaHeader from '../../Mantastudio/MainHeader'
+    import MantaPrimaryButton from '../../Mantastudio/PrimaryButton'
+    import MantaFormInput from '../../Mantastudio/FormInput'
+    import MantaFormSelect from '../../Mantastudio/FormSelect'
+    import MantaFormSearch from '../../Mantastudio/FormSearch'
     import Layout from '../../Layouts/PublicLayout.vue'
 
     export default {
         layout: Layout,
         components: {
             JetAuthenticationCard,
-            JetAuthenticationCardLogo,
-            JetButton,
-            JetInput,
-            JetCheckbox,
-            JetLabel,
             JetValidationErrors,
-            MantaMenu,
-            MantaHeader
+            MantaPrimaryButton,
+            MantaFormInput,
+            MantaFormSelect,
+            MantaFormSearch
         },
 
         props: {

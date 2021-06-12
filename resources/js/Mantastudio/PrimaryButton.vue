@@ -1,5 +1,5 @@
 <template>
-    <button class="shadow-md pushed text-white border-none w-60 h-10 text-xl rounded-full button_background primary-button-color">
+    <button class="shadow-md pushed text-white border-none w-60 h-10 text-xl rounded-full button_background primary-button-color focus:ring-2 focus:ring-blue-400 focus:border-transparent">
         <slot></slot>
     </button>
 </template>

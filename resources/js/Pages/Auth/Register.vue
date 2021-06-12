@@ -17,22 +17,18 @@
                 <option v-for="canton in cantons" :key="canton.id" :value="canton.id">{{ canton.name }}</option>
             </manta-form-select>
             <div class="relative h-20">
-            <manta-primary-button class="m-0 absolute top-2/4 left-2/4 transform -translate-x-2/4 -translate-y-2/4">
-                Suivant
-            </manta-primary-button>
-        </div>
+                <manta-primary-button class="m-0 absolute top-2/4 left-2/4 transform -translate-x-2/4 -translate-y-2/4">
+                    Je m'inscris
+                </manta-primary-button>
+            </div>
         </form>
         
     </jet-authentication-card>
+
 </template>
 
 <script>
     import JetAuthenticationCard from '@/Jetstream/AuthenticationCard'
-    import JetAuthenticationCardLogo from '@/Jetstream/AuthenticationCardLogo'
-    import JetButton from '@/Jetstream/Button'
-    import JetInput from '@/Jetstream/Input'
-    import JetCheckbox from "@/Jetstream/Checkbox";
-    import JetLabel from '@/Jetstream/Label'
     import JetValidationErrors from '@/Jetstream/ValidationErrors'
     import MantaPrimaryButton from '../../Mantastudio/PrimaryButton'
     import MantaFormInput from '../../Mantastudio/FormInput'
@@ -50,11 +46,6 @@
         },
         components: {
             JetAuthenticationCard,
-            JetAuthenticationCardLogo,
-            JetButton,
-            JetInput,
-            JetCheckbox,
-            JetLabel,
             JetValidationErrors,
             MantaPrimaryButton,
             MantaFormInput,
