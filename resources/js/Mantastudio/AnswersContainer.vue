@@ -1,17 +1,5 @@
 <template>
         <div class="flex flex-wrap place-content-center">
-            <!-- <button class="flex-1 h-36 border-4 answer mt-6 text-center text-2xl mx-4 flex flex-col justify-center items-start" :class="{ isRight: rightAnswer }">
-                <div class="mx-auto">{{answer1}}</div>
-            </button>
-            <button class="flex-1 h-36 border-4 answer mt-6 text-center text-2xl mx-4 flex flex-col justify-center items-start" :class="{ isRight: rightAnswer }">
-                <div class="mx-auto">{{answer2}}</div>
-            </button>
-            <button class="flex-1 h-36 border-4 answer mt-6 text-center text-2xl mx-4 flex flex-col justify-center items-start" :class="{ isRight: rightAnswer }">
-                <div class="mx-auto">{{answer3}}</div>
-            </button>
-            <button class="flex-1 h-36 border-4 answer mt-6 text-center text-2xl mx-4 flex flex-col justify-center items-start" :class="{ isRight: rightAnswer }">
-                <div class="mx-auto">{{answer4}}</div>
-            </button> -->
             <slot></slot>
         </div>
 </template>
