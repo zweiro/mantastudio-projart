@@ -1,5 +1,5 @@
 <template>
-    <button class="mx-auto flex flex-col rounded-full border-2 justify-center items-center shadow-md pushed text-white border-none w-60 h-10 text-xl button_background primary-button-color focus:ring-2 focus:ring-blue-400 focus:border-transparent" :class="{ primaryButtonColor: !inverseColor, inversedPrimaryButtonColor: inverseColor }">
+    <button class="mx-auto flex rounded-full border-2 justify-center items-center shadow-md pushed text-white border-none w-60 h-10 text-xl button_background primary-button-color focus:ring-2 focus:ring-blue-400 focus:border-transparent" :class="{ primaryButtonColor: !inverseColor, inversedPrimaryButtonColor: inverseColor }">
         <slot></slot>
     </button>
 </template>
