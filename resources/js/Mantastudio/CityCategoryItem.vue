@@ -1,12 +1,12 @@
 <template>
-    <a>
-        <div class="relative w-5/12">
+    <a class="flex-grow">
+        <div class="relative w-full">
             <img class="" :src="src" :alt="alt">
             <div class="absolute top-0 left-0 pt-2 ml-2 text-center text-xl font-bold">
                 {{cityName}}
             </div>    
         </div>
-        <div class="relative w-5/12">
+        <div class="relative w-full">
         <div class="overflow-hidden h-8 mb-4 text-xs flex rounded-b-lg manta-lightgray">
             <div :style="progressWidth()" class="text-2xl shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center manta-pink"></div>
                 <div class="mx-auto flex flex-col justify-center item">{{purcent}}%</div>
