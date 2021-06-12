@@ -1,5 +1,5 @@
 <template>
-    <button :class="{ primaryButtonColor: !inverseColor, inversedPrimaryButtonColor: inverseColor }" class="shadow-md pushed text-white border-none w-60 h-10 text-xl rounded-full button_background primary-button-color focus:ring-2 focus:ring-blue-400 focus:border-transparent">
+    <button class="mx-auto flex flex-col rounded-full border-2 justify-center items-center shadow-md pushed text-white border-none w-60 h-10 text-xl button_background primary-button-color focus:ring-2 focus:ring-blue-400 focus:border-transparent" :class="{ primaryButtonColor: !inverseColor, inversedPrimaryButtonColor: inverseColor }">
         <slot></slot>
     </button>
 </template>
@@ -36,9 +36,8 @@ export default {
     button:focus { outline:0 !important; }
 
     .pushed:active {
-    background: linear-gradient(90deg, rgba(106,174,190,1) 0%, rgba(243,150,161,1) 100%);
     box-shadow: 0px 2px 2px #c0c0c0;
-    transform: translateX(-50%);
+    transform: translateY(0.25em);
     }
 
     

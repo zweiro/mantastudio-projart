@@ -13,14 +13,13 @@
             </manta-form-input>
             <manta-form-input name="password" type="password" label="Mot de passe" v-model="form.password">
             </manta-form-input>
-            <div class="relative h-20">
-                <manta-primary-button class="m-0 absolute top-2/4 left-2/4 transform -translate-x-2/4 -translate-y-2/4">
-                    Me connecter
-                </manta-primary-button>
-            </div>
+            <manta-primary-button>
+                Me connecter
+            </manta-primary-button>
         </form>
         </jet-authentication-card>
     </div>
+    <!-- m-0 absolute top-2/4 left-2/4 transform -translate-x-2/4 -translate-y-2/4 -->
 </template>
 
 <script>
