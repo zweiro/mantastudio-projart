@@ -35,5 +35,9 @@ Route::get('game', function () {
 });
 Route::post('/init-game', [GameController::class, 'init'])->name('game');
 
+Route::get('start/category', function () {
+    return Inertia::render('Category');
+});
+
 require_once __DIR__ . '/fortify.php';
 require_once __DIR__ . '/jetstream.php';
