@@ -18,14 +18,11 @@ use Inertia\Inertia;
 Route::get('/', function () {
     return Inertia::render('Soon');
 });
-
+Route::get('/rules', function () {
+    return Inertia::render('Rules');
+})->name('rules');;
 Route::get('/start', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
+    return Inertia::render('Welcome');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
