@@ -1,5 +1,5 @@
 <template>
-        <div class="inline-flex space-x-4 w-full">
+        <div class="flex flex-nowrap overflow-x-auto container mt-14">
             <slot></slot>
         </div>
 </template>
@@ -8,4 +8,7 @@
 </script>
 
 <style>
+    .card {
+            flex: 0 0 auto;
+        }
 </style>
