@@ -1,7 +1,5 @@
 <template>
     <div class="mantasettings">
-        <manta-header>
-        </manta-header>
 
         <div class="min-h-screen">
             
@@ -68,7 +66,6 @@
     .layoutsettings {
         padding-left: 2em;
         padding-right: 2em;
-        padding-top: 6em;
         padding-bottom: 6em;
     }
 </style>

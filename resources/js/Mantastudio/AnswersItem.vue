@@ -1,5 +1,5 @@
 <template>
-    <button class="flex-1 h-36 border-4 answer mt-6 text-center text-2xl mx-4 flex flex-col justify-center items-start" :class="{ isRight: rightAnswer, isWrong: wrongAnswer }">
+    <button class="flex-shrink-0 h-32 w-32 border-4 answer mt-6 text-xl mx-4 flex flex-col justify-center items-start" :class="{ isRight: rightAnswer, isWrong: wrongAnswer }">
         <div class="mx-auto">
             <slot></slot>
         </div>

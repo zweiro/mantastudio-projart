@@ -41,7 +41,7 @@
 #countdown {
   position: relative;
   margin: auto;
-  margin-top: 100px;
+  margin-top: 1em;
   height: 40px;
   width: 40px;
   text-align: center;
