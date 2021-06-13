@@ -13,7 +13,11 @@ class Game extends Model
         return $this->belongsToMany(Answer::class);
     }
 
-    public function question() {
-        return $this->hasMany(Question::class);
+    public function questions() {
+        return $this->belongsToMany(Question::class);
+    }
+
+    public function players() {
+        return $this->belongsToMany(User::class);
     }
 }

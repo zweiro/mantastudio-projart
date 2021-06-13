@@ -2,6 +2,7 @@
 
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GameController;
 use Inertia\Inertia;
 
 /*
@@ -28,6 +29,11 @@ Route::get('/start', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->name('dashboard');
+
+Route::get('game', function () {
+    return Inertia::render('Game');
+});
+Route::post('/init-game', [GameController::class, 'init'])->name('game');
 
 require_once __DIR__ . '/fortify.php';
 require_once __DIR__ . '/jetstream.php';

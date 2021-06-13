@@ -15,7 +15,6 @@ class CreateGameQuestionTable extends Migration
     {
         Schema::create('game_question', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
             $table->foreignId('game_id')->constrained();
             $table->foreignId('question_id')->constrained();
         });
