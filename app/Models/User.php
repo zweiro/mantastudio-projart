@@ -83,4 +83,8 @@ class User extends Authenticatable
     public function cantons() {
         return $this->belongsTo(Canton::class);
     }
+
+    public function friends() {
+        return $this->belongsToMany(User::class, 'friend_user','friend_id');
+    }
 }

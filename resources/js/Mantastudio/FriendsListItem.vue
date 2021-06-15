@@ -4,7 +4,9 @@
         <div class="flex-grow h-12 text-center text-xl font-medium flex flex-col justify-center items-start">
             <div class="ml-4">{{username}}</div>
         </div>
-        <img class="flex-none w-12 h-12 mr-4" src="/images/form/loupe.svg"/>
+        <inertia-link :href="link" method="get" :data="{ opponent: friendId }">
+            <img class="flex-none w-12 h-12 mr-4" src="/images/friendlist/bataille.svg"/>
+        </inertia-link>
     </div>
 </template>
 
@@ -12,12 +14,16 @@
 export default {
     props: {
         avatar: String,
-        username: String
+        username: String,
+        link: String,
+        friendId: Number
     },
     setup(props) {  
         return {
             avatar: props.avatar,
-            username: props.username
+            username: props.username,
+            link: props.link,
+            friendId: props.friendId
         }
     }
     
