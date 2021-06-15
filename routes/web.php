@@ -42,7 +42,7 @@ Route::get('start/category', function () {
 
 Route::get('start', function () {
     return Inertia::render('Start');
-});
+})->name('start');
 
 Route::get('start/battle', [UserController::class, 'getFriends']);
 
