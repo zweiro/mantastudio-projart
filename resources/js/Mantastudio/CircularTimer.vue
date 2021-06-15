@@ -1,38 +1,45 @@
 <template>
-    <div id="countdown">
-    <div id="countdown-number">{{ timerCount }}</div>
-    <svg>
-        <circle r="18" cx="20" cy="20"></circle>
-    </svg>
+    <div class="mb-4">
+      <div id="countdown">
+      <div id="countdown-number">{{ timerCount }}</div>
+      <svg>
+          <circle r="18" cx="20" cy="20" :key="key" :class="{fiveSeconds: read, fifteenSeconds: !read}"></circle>
+      </svg>
+      </div>
     </div>
 </template>
 
 <script>
+    import { ref, computed } from 'vue'
 
     export default {
-
-        data() {
-            return {
-                timerCount: 10
-            }
-        },
-
-        watch: {
-
-            timerCount: {
-                handler(value) {
-
-                    if (value > 0) {
-                        setTimeout(() => {
-                            this.timerCount--;
-                        }, 1000);
-                    }
-
-                },
-                immediate: true 
-            }
-
+      props: {
+        'repeat': Number,
+        'read': Boolean
+      },
+      emits:['timerEnded'],
+      setup(props, context) {
+        let timerCount = ref(5);
+        let read = computed(() => {
+          return props.read;
+        });
+        let key = computed(() => {
+          timerCount.value = read.value ? 5 : 15;
+          return props.repeat;
+        });
+        let timer = setInterval(() => {
+          if(timerCount.value > 1) {
+            timerCount.value--;
+          } else {
+            context.emit('timerEnded');
+          }
+        },1000);
+        return {
+          timerCount,
+          key,
+          read
         }
+      },
     }
 
 </script>
@@ -69,7 +76,13 @@ svg circle {
   stroke-width: 4px;
   stroke: #68626C;
   fill: none;
-  animation: countdown 10s linear forwards;
+}
+
+.fifteenSeconds {
+  animation: countdown 15s linear forwards;
+}
+.fiveSeconds {
+  animation: countdown 5s linear forwards;
 }
 
 @keyframes countdown {

@@ -1,5 +1,5 @@
 <template>
-    <button class="flex-shrink-0 h-32 w-32 border-4 answer mt-6 text-xl mx-4 flex flex-col justify-center items-start" :class="{ isRight: rightAnswer, isWrong: wrongAnswer }">
+    <button @click="$emit('response')" class="disabled:opacity-50 flex-shrink-0 h-16 w-full border-4 answer mb-6 text-lg mx-2 flex flex-col justify-center items-start" :class="{ isRight: rightAnswer, isWrong: wrongAnswer }">
         <div class="mx-auto">
             <slot></slot>
         </div>
@@ -7,7 +7,10 @@
 </template>
 
 <script>
+import { computed } from 'vue'
+
 export default {
+    emits:['response'],
     props: {
         rightAnswer: {
         type: Boolean,
@@ -20,8 +23,8 @@ export default {
     },
     setup(props) {  
         return {
-            rightAnswer: props.rightAnswer,
-            wrongAnswer: props.wrongAnswer
+            rightAnswer: computed(()=>props.rightAnswer),
+            wrongAnswer: computed(()=>props.wrongAnswer)
         }
     }
     

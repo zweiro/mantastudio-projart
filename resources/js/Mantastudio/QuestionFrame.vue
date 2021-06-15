@@ -1,30 +1,32 @@
 <template>
-    <div class="overflow-hidden h-4 my-4 text-xs flex rounded-full manta-lightgray">
-            <div :style="progressWidth()" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center manta-blue"></div>
+        <div class="overflow-hidden h-4 my-4 text-xs flex rounded-full manta-lightgray">
+                <div :style="progressWidth()" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center manta-blue"></div>
+        </div>
+        <div class="border-4 questionFrame h-44">
+            <div class="pt-2 text-center text-sm font-bold">
+                {{currentNumber}}/{{totalNumber}}
             </div>
-    <div class="border-4 questionFrame h-44">
-        <div class="pt-2 text-center text-sm font-bold">
-            {{currentNumber}}/{{totalNumber}}
+            <div class="mt-3 text-center text-xl mx-4 flex flex-col justify-center items-start">
+                {{ question }}
+            </div>
+            
         </div>
-        <div class="mt-6 text-center text-2xl mx-4 flex flex-col justify-center items-start">
-            {{question}}
-        </div>
-        
-    </div>
 </template>
 
 <script>
+import { computed } from 'vue'
+
 export default {
     props: {
-        currentNumber: String,
-        totalNumber: String,
+        currentNumber: Number,
+        totalNumber: Number,
         question: String
     },
     setup(props) {  
         return {
-            currentNumber: props.currentNumber,
-            totalNumber: props.totalNumber,
-            question: props.question
+            currentNumber: computed(()=>props.currentNumber),
+            totalNumber: computed(()=>props.totalNumber),
+            question: computed(()=>props.question)
         }
     },
     methods: {

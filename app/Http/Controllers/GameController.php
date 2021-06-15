@@ -66,9 +66,11 @@ class GameController extends Controller
             array_push($fullQuestions,[
                 'id' => $question->id,
                 'text' => $question->text,
-                'answers' => $question->questionAnswers()->get(['id','text'])->ToArray()
+                'answers' => $question->questionAnswers()->inRandomOrder()->get(['id','text'])->ToArray()
             ]);
         }
-        dd($fullQuestions);
+        return Inertia::render('Game', [
+            'questions' => $fullQuestions,
+        ]);
     }
 }

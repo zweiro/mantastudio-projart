@@ -83,4 +83,8 @@ class User extends Authenticatable
     public function cantons() {
         return $this->belongsTo(Canton::class);
     }
+
+    public function games() {
+        return $this->belongsToMany(Game::class)->withPivot('start_time');;
+    }
 }

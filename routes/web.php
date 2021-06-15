@@ -3,6 +3,7 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GameController;
+use App\Http\Controllers\QuestionController;
 use Inertia\Inertia;
 
 /*
@@ -33,8 +34,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::get('game', function () {
     return Inertia::render('Game');
 });
+
 Route::post('/init-game', [GameController::class, 'init'])->name('game');
 Route::get('/test/{id}', [GameController::class, 'startGame'])->name('text');
+Route::get('/answer/{id}', [QuestionController::class, 'getAnswer'])->name('answer');
 
 Route::get('start/category', function () {
     return Inertia::render('Category');
