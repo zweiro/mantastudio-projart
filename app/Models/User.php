@@ -85,6 +85,9 @@ class User extends Authenticatable
     }
 
     public function games() {
-        return $this->belongsToMany(Game::class)->withPivot('start_time');;
+        return $this->belongsToMany(Game::class)->withPivot('start_time');
+    }
+    public function friends() {
+        return $this->belongsToMany(User::class, 'friend_user','friend_id');
     }
 }

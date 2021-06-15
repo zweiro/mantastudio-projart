@@ -1,10 +1,11 @@
 <?php
 
-use Illuminate\Foundation\Application;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\GameController;
-use App\Http\Controllers\QuestionController;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Application;
+use App\Http\Controllers\GameController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\QuestionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +43,8 @@ Route::get('/answer/{id}', [QuestionController::class, 'getAnswer'])->name('answ
 Route::get('start/category', function () {
     return Inertia::render('Category');
 });
+
+Route::get('start/battle', [UserController::class, 'getFriends']);
 
 require_once __DIR__ . '/fortify.php';
 require_once __DIR__ . '/jetstream.php';
