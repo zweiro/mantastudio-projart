@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\QuestionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,10 +22,10 @@ Route::get('/', function () {
 });
 Route::get('/rules', function () {
     return Inertia::render('Rules');
-})->name('rules');
+})->name('rules');;
 Route::get('/start', function () {
     return Inertia::render('Welcome');
-})->name('start');
+});
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');
@@ -35,13 +34,14 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::get('game', function () {
     return Inertia::render('Game');
 });
-
 Route::post('/init-game', [GameController::class, 'init'])->name('game');
-Route::get('/test/{id}', [GameController::class, 'startGame'])->name('text');
-Route::get('/answer/{id}', [QuestionController::class, 'getAnswer'])->name('answer');
 
 Route::get('start/category', function () {
     return Inertia::render('Category');
+});
+
+Route::get('start', function () {
+    return Inertia::render('Start');
 });
 
 Route::get('start/battle', [UserController::class, 'getFriends']);
