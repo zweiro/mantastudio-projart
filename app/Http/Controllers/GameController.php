@@ -25,9 +25,28 @@ class GameController extends Controller
         if($id != null && $opponent == null) {
             return Inertia::render('Start');
         } else {
-            return Inertia::render('Category', [
-                'opponent_id' => $id
-            ]);
+            $lausanne_full = DB::table('game_question_question_answer_user')
+            ->join('questions', 'game_question_question_answer_user.question_id', '=', 'questions.id')
+            ->where('user_id', Auth::user()->id)
+            ->where('questions.city_id', 2)
+            ->where('points', '!=', 0)
+            ->count();
+
+            $lausanne_percent = min(intval($lausanne_full / GameController::SEASON_GOAL * 100),100);
+
+            $neuchatel_full = DB::table('game_question_question_answer_user')
+            ->join('questions', 'game_question_question_answer_user.question_id', '=', 'questions.id')
+            ->where('user_id', Auth::user()->id)
+            ->where('questions.city_id', 4)
+            ->where('points', '!=', 0)
+            ->count();
+
+            $neuchatel_percent = min(intval($neuchatel_full / GameController::SEASON_GOAL * 100),100);
+                return Inertia::render('Category', [
+                    'opponent_id' => $id,
+                    'lausanne_percent' => $lausanne_percent,
+                    'neuchatel_percent' => $neuchatel_percent
+                ]);
         }
     }
 

@@ -1,9 +1,9 @@
 <template>
     <h1 class="text-4xl mx-auto text-center">Quiz</h1>
     <manta-city-category-container>
-        <manta-city-category-item src="/images/cities/lausanne_smartphone.svg" alt="Lausanne" cityName="Lausanne" purcent="20" @citySelected="selectCity(2)">
+        <manta-city-category-item src="/images/cities/lausanne_smartphone.svg" alt="Lausanne" cityName="Lausanne" :purcent="lausanne_percent" @citySelected="selectCity(2)">
         </manta-city-category-item>
-        <manta-city-category-item src="/images/cities/neuchatel_smartphone.svg" alt="Neuchâtel" cityName="Neuchâtel" purcent="10" @citySelected="selectCity(4)">
+        <manta-city-category-item src="/images/cities/neuchatel_smartphone.svg" alt="Neuchâtel" cityName="Neuchâtel" :purcent="neuchatel_percent" @citySelected="selectCity(4)">
         </manta-city-category-item>
     </manta-city-category-container>
     <manta-category-container>
@@ -42,9 +42,13 @@
         data() {
             let form = null;
             const opponent_id = usePage().props.value.opponent_id;
+            const lausanne_percent = usePage().props.value.lausanne_percent;
+            const neuchatel_percent = usePage().props.value.neuchatel_percent;
             return {
                 form: form,
                 opponent_id,
+                lausanne_percent,
+                neuchatel_percent,
             }
         },
 
