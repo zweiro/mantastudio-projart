@@ -78,7 +78,6 @@
                 .catch(function (error) {
                     console.log(error);
                 });
-                console.log(this.question_index);
                 if(this.question_index > 8) {
                     window.location.replace("../results/" + this.game_id);
                 } else {

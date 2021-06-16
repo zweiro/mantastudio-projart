@@ -15,7 +15,7 @@ export default {
     props: {
         points: Number,
         cityName: String,
-        purcent: String,
+        purcent: Number,
     },
     setup(props) {  
         return {

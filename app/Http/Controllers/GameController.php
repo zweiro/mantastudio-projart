@@ -18,6 +18,7 @@ class GameController extends Controller
 {
     public const GAME_HOME = 'start';
     public const GAME_MAX_TIME = 180; // 10 questions x (3 seconds of questions read + 10 seconds for answer + 5 seconds of results)
+    public const SEASON_GOAL = 50;
 
     public function gameSettings($id = null) {
         $opponent = User::where('id', $id)->first();
@@ -104,10 +105,60 @@ class GameController extends Controller
         ->where('game_id', $gameId)
         ->where('user_id', Auth::user()->id)
         ->sum('points');
-        
+
         return Inertia::render('Results', [
             'nbRightAnswers' => $nbRightAnswers,
             'nbPoints' => $nbPoints,
+            'game_id' => $game->id
+        ]);
+    }
+
+    public function showGains($gameId) {
+        $game = Game::where('id', $gameId)->first();
+
+        if($game == null || !$game->players()->where('users.id', Auth::user()->id)->exists()) {
+            return Redirect::route(GameController::GAME_HOME);
+        }
+
+        $lausanne = DB::table('game_question_question_answer_user')
+        ->join('questions', 'game_question_question_answer_user.question_id', '=', 'questions.id')
+        ->where('game_id', $gameId)
+        ->where('user_id', Auth::user()->id)
+        ->where('questions.city_id', 2)
+        ->where('points', '!=', 0)
+        ->count();
+
+        $lausanne_full = DB::table('game_question_question_answer_user')
+        ->join('questions', 'game_question_question_answer_user.question_id', '=', 'questions.id')
+        ->where('user_id', Auth::user()->id)
+        ->where('questions.city_id', 2)
+        ->where('points', '!=', 0)
+        ->count();
+
+        $lausanne_percent = min(intval($lausanne_full / GameController::SEASON_GOAL * 100),100);
+
+        $neuchatel = DB::table('game_question_question_answer_user')
+        ->join('questions', 'game_question_question_answer_user.question_id', '=', 'questions.id')
+        ->where('game_id', $gameId)
+        ->where('user_id', Auth::user()->id)
+        ->where('questions.city_id', 4)
+        ->where('points', '!=', 0)
+        ->count();
+
+        $neuchatel_full = DB::table('game_question_question_answer_user')
+        ->join('questions', 'game_question_question_answer_user.question_id', '=', 'questions.id')
+        ->where('user_id', Auth::user()->id)
+        ->where('questions.city_id', 4)
+        ->where('points', '!=', 0)
+        ->count();
+
+        $neuchatel_percent = min(intval($neuchatel_full / GameController::SEASON_GOAL * 100),100);
+
+        return Inertia::render('Earnings', [
+            'lausanne' => $lausanne,
+            'neuchatel' => $neuchatel,
+            'lausanne_percent' => $lausanne_percent,
+            'neuchatel_percent' => $neuchatel_percent
         ]);
     }
 }

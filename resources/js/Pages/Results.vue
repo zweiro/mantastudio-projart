@@ -8,7 +8,7 @@
             </div>
         </div>
         
-        <a href="/results/">
+        <a :href="gainLink">
             <manta-primary-button class="mt-36">Voir mes gains</manta-primary-button>
         </a>
         <a href="/start">
@@ -22,6 +22,7 @@
     import { usePage } from '@inertiajs/inertia-vue3'
     import Layout from '../Layouts/AppLayout.vue'
     import MantaPersonnalScore from '../Mantastudio/PersonnalScore'
+    import { computed } from 'vue';
 
     export default {
         layout: Layout,
@@ -32,10 +33,14 @@
         setup(props) {
             const nbRightAnswers = usePage().props.value.nbRightAnswers;
             const nbPoints = usePage().props.value.nbPoints;
+            const game_id = usePage().props.value.game_id;
+            const gainLink = computed(() => "/gains/" + game_id);
             console.log(nbRightAnswers);
             return {
                 nbRightAnswers,
-                nbPoints
+                nbPoints,
+                game_id,
+                gainLink,
             }
         },
     }
