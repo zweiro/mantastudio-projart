@@ -6,16 +6,21 @@
     import MantaAnswersItem from '../Mantastudio/AnswersItem'
     import MantaAnswersContainer from '../Mantastudio/AnswersContainer'
     import MantaCircularTimer from '../Mantastudio/CircularTimer'
+    import JetDialogModal from '@/Jetstream/DialogModal'
 
     export default {
         layout: Layout,
         setup(props) {
+            let timeToAnswer = 0;
+            let confirmQuit = ref(false);
             let repeat = ref(0);
             let read = ref(true);
             let state = ref("reading");
             let answerChoosen = ref(false);
             let showAnswers = ref(false);
             const questions = usePage().props.value.questions;
+            const game_id = usePage().props.value.game_id;
+            const user_id = usePage().props.value.user['id'];
             const question_total = questions.length;
             const question_index = ref(0);
             const correctAnswer = ref(null);
@@ -39,7 +44,11 @@
                 correctAnswer,
                 repeat,
                 read,
-                state
+                state,
+                confirmQuit,
+                timeToAnswer,
+                game_id,
+                user_id
             }
         },
         mounted() {
@@ -51,11 +60,23 @@
             MantaQuestionFrame,
             MantaAnswersItem,
             MantaAnswersContainer,
-            MantaCircularTimer
+            MantaCircularTimer,
+            JetDialogModal
 
         },
         methods: {
             nextQuestion() {
+                axios.post('../set-user-answer', {
+                    game_id: this.game_id,
+                    user_id: this.user_id,
+                    question_id: this.questions[this.question_index].id,
+                    answer_id: this.idChoosenNumber,
+                    time: this.timeToAnswer
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+                this.timeToAnswer = 0;
                 this.answerChoosen = false;
                 this.idChoosenNumber = null;
                 this.question_index++;
@@ -97,6 +118,9 @@
                         this.nextState();
                     }
                 }
+            },
+            timeReduce() {
+                this.timeToAnswer++;
             }
         }
     }
@@ -104,13 +128,13 @@
 
 <template>
     <div>
-        <div class="w-full pt-4 pb-6">
+        <button @click="confirmQuit = !confirmQuit" class="pt-4 pb-6">
             <a>Retour</a>
-        </div>
+        </button>
         <manta-question-frame :currentNumber="question_human_index" :totalNumber="question_total" :question="question_title">
             {{ question_title }}
         </manta-question-frame>
-        <manta-circular-timer :repeat="repeat" :read="read" @timerEnded="nextState()">
+        <manta-circular-timer :repeat="repeat" :read="read" @timerEnded="nextState()" @second="timeReduce()">
         </manta-circular-timer>
         <transition name="fade">
             <manta-answers-container v-show="showAnswers">
@@ -119,9 +143,28 @@
                 </manta-answers-item>
             </manta-answers-container>
         </transition>
-    </div>
-    
+        <jet-dialog-modal :show="confirmQuit" @close="confirmQuit = !confirmQuit">
+                <template #title>
+                    Attention !
+                </template>
 
+                <template #content>
+                    Voulez-vous vraiment quitter ? Vous perdrez par forfait...
+                </template>
+
+                <template #footer>
+                    <button class="rounded-md bg-gray-200 p-4" @click="confirmQuit = !confirmQuit">
+                        Fermer
+                    </button>
+                    <inertia-link href="../start" method="get">
+                        <button class="ml-4 rounded-md bg-gray-400 p-4" @click="console.log('Hello!')">
+                            Quitter
+                        </button>
+                    </inertia-link>
+                    
+                </template>
+        </jet-dialog-modal>
+    </div>
 </template>
 
 <style>
