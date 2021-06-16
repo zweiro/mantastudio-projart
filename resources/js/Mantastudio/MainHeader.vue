@@ -1,7 +1,7 @@
 <template>
     <div class="fixed top-0 w-full">
         <ul class="flex items-center justify-between sm:justify-between h-20 px-5 sm:px-10 mantacolor">
-                <li>
+                <li @click="toggleNotif">
                     <span v-if="notiftoread" class="absolute h-3 w-3">
                         <span id="animate-notif" class="notif left-4 animate-ping absolute inline-flex h-3 w-3 rounded-full bg-purple-400 opacity-75"></span>
                         <span class="notif left-4 relative inline-flex rounded-full h-3 w-3 bg-purple-500"></span>
@@ -11,6 +11,10 @@
             <li><inertia-link href="/start"><img src="/images/header/logo_reponzi.svg" alt="menu de l'application reponzi" id="logo"></inertia-link></li>
             <li class="cursor-pointer" @click="toggleProfile" >{{ $page.props.user.username }}</li>
         </ul>
+        <div v-show="isNotifToggled" class="fixed inset-0 z-40" @click="toggleNotif()"></div>
+            <ul v-show="isNotifToggled" class="overflow-auto max-h-96 fixed z-50 border-b-2 sm:border-r-2 border-gray-300 w-full sm:w-1/2 lg:w-1/4 divide-y divide-light-gray-400">
+                <slot></slot>
+            </ul>
         <div v-show="isProfileToggled" class="fixed inset-0 z-40" @click="toggleProfile()"></div>
         <ul v-show="isProfileToggled" class="fixed z-50 border-b-2 sm:border-l-2 border-gray-300 w-full sm:w-1/4 lg:w-1/6 right-0 divide-y divide-light-gray-400">
             <li class="p-4 profileLink">Mon profil</li>
@@ -31,14 +35,19 @@ export default {
     },
     setup(props) {
         const isProfileToggled = ref(false);
+        const isNotifToggled = ref(false);
         return {
             notiftoread: props.notiftoread,
             isProfileToggled,
+            isNotifToggled,
         }
     },
     methods: {
         toggleProfile() {
             this.isProfileToggled = !this.isProfileToggled;
+        },
+        toggleNotif() {
+            this.isNotifToggled = !this.isNotifToggled;
         },
         logout() {
             this.$inertia.post(route('logout'));    

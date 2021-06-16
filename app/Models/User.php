@@ -64,10 +64,6 @@ class User extends Authenticatable
         return $this->belongsToMany(Badge::class);
     }
 
-    public function notifications() {
-        return $this->hasMany(Notification::class);
-    }
-
     public function answers() {
         return $this->hasMany(Answer::class);
     }
