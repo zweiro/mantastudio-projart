@@ -175,11 +175,11 @@
                     <button class="rounded-md bg-gray-200 p-4" @click="confirmQuit = !confirmQuit">
                         Fermer
                     </button>
-                    <inertia-link href="../start" method="get">
+                    <a href="../start">
                         <button class="ml-4 rounded-md bg-gray-400 p-4" @click="console.log('Hello!')">
                             Quitter
                         </button>
-                    </inertia-link>
+                    </a>
                     
                 </template>
         </jet-dialog-modal>
