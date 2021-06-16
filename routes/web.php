@@ -44,7 +44,9 @@ Route::get('start', function () {
     return Inertia::render('Start');
 })->name('start');
 
-Route::get('start/battle', [UserController::class, 'getFriends']);
+Route::get('friends', [UserController::class, 'showFriendsList'])->name('friends');
+
+Route::get('start/battle', [UserController::class, 'showBattleFriends']);
 
 require_once __DIR__ . '/fortify.php';
 require_once __DIR__ . '/jetstream.php';

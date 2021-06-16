@@ -4,7 +4,7 @@
         <inertia-link href="/start/category" method="get" :data="{ opponent: randomId(users) }">
             <manta-primary-button class="mt-8">Aléatoire</manta-primary-button>
         </inertia-link>
-        <manta-form-search @filter="filterFriends()" class="mt-4 mb-4" placeholder="Rechercher un ami" name="friend"></manta-form-search>
+        <manta-form-search @filter="filterFriends()" id="search" class="mt-4 mb-4" placeholder="Rechercher un ami" name="friend"></manta-form-search>
         <manta-friends-list-item v-for="friend in friends" link="/start/category" :key="friend.id" :src="friend.avatar" :username="friend.username" :friendId="+friend.id">
         </manta-friends-list-item>
     </div>

@@ -11,11 +11,29 @@ class UserController extends Controller
 {
     public function getFriends() {
         $user = Auth::user();
-        $users = $user->where('id', '!=', auth()->id())->get();
         $friends = $user->friends()->get();
+        return $friends;
+    }
+
+    public function getUsers() {
+        $user = Auth::user();
+        $users = $user->where('id', '!=', auth()->id())->get();
+        return $users;
+    }
+
+    public function showBattleFriends() {
         return Inertia::render('BattleChoice', [
-            'friends' => $friends,
-            'users' => $users
+            'friends' => $this->getFriends(),
+            'users' => $this->getUsers(),
         ]);
     }
+
+    public function showFriendsList() {
+        return Inertia::render('Friends', [
+            'friends' => $this->getFriends(),
+            'users' => $this->getUsers(),
+        ]);
+    }
+
+    
 }
