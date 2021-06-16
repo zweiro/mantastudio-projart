@@ -38,7 +38,9 @@ Route::get('start/category/{id?}', [GameController::class, 'gameSettings']);
 Route::post('/init-game', [GameController::class, 'init'])->name('game');
 Route::get('/play/{id}', [GameController::class, 'startGame'])->name('play');
 Route::get('/answer/{id}', [QuestionController::class, 'getAnswer']);
-
+Route::get('/results', function () {
+    return Inertia::render('Results');
+});
 
 
 Route::get('friends', [UserController::class, 'showFriendsList'])->name('friends');
