@@ -44,6 +44,11 @@ Route::get('/answer/{id}', [QuestionController::class, 'getAnswer']);
 
 Route::get('friends', [UserController::class, 'showFriendsList'])->name('friends');
 
+Route::post('friends/ask', [UserController::class, 'askFriend']);
+Route::post('friends/accept', [UserController::class, 'acceptFriend']);
+Route::post('friends/refuse', [UserController::class, 'refuseFriend']);
+
+Route::get('start/battle', [UserController::class, 'showBattleFriends']);
 
 //TESTS
 Route::get('/notify/{id}', [NotificationController::class, 'notify']);

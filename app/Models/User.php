@@ -84,6 +84,6 @@ class User extends Authenticatable
         return $this->belongsToMany(Game::class)->withPivot('start_time');
     }
     public function friends() {
-        return $this->belongsToMany(User::class, 'friend_user','friend_id');
+        return $this->belongsToMany(User::class, 'friend_user','friend_id')->withPivot('isAccepted', 'request_user_id');
     }
 }
