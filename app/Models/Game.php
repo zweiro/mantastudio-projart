@@ -20,4 +20,8 @@ class Game extends Model
     public function players() {
         return $this->belongsToMany(User::class)->withPivot('start_time');
     }
+
+    public function questionAnswers() {
+        return $this->belongsToMany(QuestionAnswer::class);
+    }
 }

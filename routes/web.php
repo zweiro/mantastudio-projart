@@ -33,6 +33,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('start', function () {
 })->name('start');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('start/battle', [UserController::class, 'showBattleFriends']);
+Route::middleware(['auth:sanctum', 'verified'])->post('set-user-answer', [QuestionController::class, 'setUserAnswer']);
 Route::get('start/category/{id?}', [GameController::class, 'gameSettings']);
 
 Route::post('/init-game', [GameController::class, 'init'])->name('game');

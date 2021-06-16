@@ -83,6 +83,7 @@ class GameController extends Controller
         }
         return Inertia::render('Game', [
             'questions' => $fullQuestions,
+            'game_id' => $game->id,
         ]);
     }
 }

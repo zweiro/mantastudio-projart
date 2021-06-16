@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Game;
 use App\Models\Question;
-
+use App\Models\QuestionAnswer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class QuestionController extends Controller
 {
@@ -18,5 +20,15 @@ class QuestionController extends Controller
             }
         }
         abort(403);
+    }
+
+    public function setUserAnswer(Request $request) {
+        DB::table('game_question_question_answer_user')->insert([
+            'game_id' => $request->game_id,
+            'question_id' => $request->question_id,
+            'question_answer_id' => $request->answer_id,
+            'user_id' => $request->user_id,
+            'time' => $request->time,
+        ]);
     }
 }

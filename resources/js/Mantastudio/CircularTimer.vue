@@ -17,7 +17,7 @@
         'repeat': Number,
         'read': Boolean
       },
-      emits:['timerEnded'],
+      emits:['timerEnded', 'second'],
       setup(props, context) {
         let timerCount = ref(5);
         let read = computed(() => {
@@ -30,6 +30,9 @@
         let timer = setInterval(() => {
           if(timerCount.value > 1) {
             timerCount.value--;
+            if(!props.read) {
+              context.emit('second');
+            }
           } else {
             context.emit('timerEnded');
           }
