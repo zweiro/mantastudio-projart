@@ -2,11 +2,6 @@
     <div class="mantasettings">
         <manta-header class="z-10">
             <li class="p-4 self-center"><manta-friend-request></manta-friend-request></li>
-            <li class="p-4 self-center"><manta-friend-request></manta-friend-request></li>
-            <li class="p-4 self-center"><manta-friend-request></manta-friend-request></li>
-            <li class="p-4 self-center"><manta-friend-request></manta-friend-request></li>
-            <li class="p-4 self-center"><manta-friend-request></manta-friend-request></li>
-            <li class="p-4 self-center"><manta-friend-request></manta-friend-request></li>
         </manta-header>
 
         <div class="min-h-screen z-5">

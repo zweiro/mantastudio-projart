@@ -9,7 +9,7 @@
                     <img src="/images/header/bell.svg" alt="notifications" id="notifications">
                 </li>
             <li><inertia-link href="/start"><img src="/images/header/logo_reponzi.svg" alt="menu de l'application reponzi" id="logo"></inertia-link></li>
-            <li class="cursor-pointer" @click="toggleProfile" >{{ $page.props.user.username }}</li>
+            <li class="cursor-pointer" @click="toggleProfile" ><img class="w-10 h-10 rounded-full" src="/images/avatar/photoPasseportMarmotte.svg" alt="Image de l'avatar"></li>
         </ul>
         <div v-show="isNotifToggled" class="fixed inset-0 z-40" @click="toggleNotif()"></div>
             <ul v-show="isNotifToggled" class="overflow-auto max-h-96 fixed z-50 border-b-2 sm:border-r-2 border-gray-300 w-full sm:w-1/2 lg:w-1/4 divide-y divide-light-gray-400">

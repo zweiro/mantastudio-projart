@@ -21,6 +21,7 @@ class CreateGameQuestionQuestionAnswerUserTable extends Migration
             $table->foreignId('question_answer_id')->constrained();
             $table->foreignId('user_id')->constrained();
             $table->integer('time');
+            $table->integer('points');
         });
     }
 

@@ -66,12 +66,14 @@
         },
         methods: {
             nextQuestion() {
+                let points = this.idChoosenNumber == this.correctAnswer ? this.getPoints(this.timeToAnswer) : 0;
                 axios.post('../set-user-answer', {
                     game_id: this.game_id,
                     user_id: this.user_id,
                     question_id: this.questions[this.question_index].id,
                     answer_id: this.idChoosenNumber,
-                    time: this.timeToAnswer
+                    time: this.timeToAnswer,
+                    points: points,
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -121,6 +123,19 @@
             },
             timeReduce() {
                 this.timeToAnswer++;
+            },
+            getPoints(time) {
+                if(time < 4) {
+                    return 5;
+                } else if(time < 7){
+                    return 4;
+                } else if(time < 10) {
+                    return 3;
+                } else if(time < 13) {
+                    return 2;
+                } else {
+                    return 1;
+                }
             }
         }
     }

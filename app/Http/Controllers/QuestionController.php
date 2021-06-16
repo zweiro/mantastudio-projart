@@ -29,6 +29,7 @@ class QuestionController extends Controller
             'question_answer_id' => $request->answer_id,
             'user_id' => $request->user_id,
             'time' => $request->time,
+            'points' => $request->points
         ]);
     }
 }
