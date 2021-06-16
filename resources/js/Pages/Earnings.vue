@@ -1,12 +1,9 @@
 <template>
     <div>
-        <h1 class="text-4xl mx-auto text-center mb-16">Résultats</h1>
-        <manta-personnal-score class="mt-24" score="8" total="10" avatar="/images/avatar/photoPasseportMarmotte.svg"></manta-personnal-score>
-        <a href="/results/">
-            <manta-primary-button class="mt-36">Voir mes gains</manta-primary-button>
-        </a>
-        <a href="/start">
-            <manta-primary-button class="mt-8 inversedPrimaryButtonColor">Rejouer</manta-primary-button>
+        <h1 class="text-4xl mx-auto text-center mb-16">Gains</h1>
+        <manta-city-earnings points="8" purcent="20" cityName="Lausanne"></manta-city-earnings>
+        <a href="/start/">
+            <manta-primary-button class="mt-36">Terminer</manta-primary-button>
         </a>
     </div>
 </template>
@@ -16,7 +13,6 @@
     import MantaPrimaryButton from '../Mantastudio/PrimaryButton'
     import { usePage } from '@inertiajs/inertia-vue3'
     import Layout from '../Layouts/AppLayout.vue'
-    import MantaPersonnalScore from '../Mantastudio/PersonnalScore'
     import MantaCityEarnings from '../Mantastudio/CityEarnings'
     import { computed, ref } from 'vue'
 
@@ -25,7 +21,6 @@
         components: {
             JetAuthenticationCard,
             MantaPrimaryButton,
-            MantaPersonnalScore,
             MantaCityEarnings
 
         },
