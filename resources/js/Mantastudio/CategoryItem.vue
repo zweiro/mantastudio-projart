@@ -1,5 +1,5 @@
 <template>
-    <a class="card relative mr-4 w-48">
+    <a class="card relative mr-4 w-48 cursor-pointer" @click="$emit('categorySelected')">
             <div class="absolute top-0 left-0 pt-2 ml-2 text-center text-xl font-bold">
                 {{categoryName}}
             </div>
@@ -9,6 +9,7 @@
 
 <script>
 export default {
+    emits:['categorySelected'],
     props: {
         src: String,
         alt: String,

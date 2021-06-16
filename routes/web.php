@@ -6,6 +6,7 @@ use Illuminate\Foundation\Application;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\QuestionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,25 +28,17 @@ Route::get('/rules', function () {
 })->name('rules');;
 
 //AUTH ROUTES
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->name('dashboard');
-
 Route::middleware(['auth:sanctum', 'verified'])->get('start', function () {
     return Inertia::render('Start');
 })->name('start');
 
-Route::get('/notify/{id}', [NotificationController::class, 'notify']);
-Route::get('/get-notifs', [NotificationController::class, 'getNotifications']);
+Route::middleware(['auth:sanctum', 'verified'])->get('start/battle', [UserController::class, 'showBattleFriends']);
+Route::get('start/category/{id?}', [GameController::class, 'gameSettings']);
 
-Route::get('game', function () {
-    return Inertia::render('Game');
-});
 Route::post('/init-game', [GameController::class, 'init'])->name('game');
+Route::get('/play/{id}', [GameController::class, 'startGame'])->name('play');
+Route::get('/answer/{id}', [QuestionController::class, 'getAnswer']);
 
-Route::get('start/category', function () {
-    return Inertia::render('Category');
-});
 
 
 Route::get('friends', [UserController::class, 'showFriendsList'])->name('friends');
@@ -55,6 +48,10 @@ Route::post('friends/accept', [UserController::class, 'acceptFriend']);
 Route::post('friends/refuse', [UserController::class, 'refuseFriend']);
 
 Route::get('start/battle', [UserController::class, 'showBattleFriends']);
+
+//TESTS
+Route::get('/notify/{id}', [NotificationController::class, 'notify']);
+Route::get('/get-notifs', [NotificationController::class, 'getNotifications']);
 
 require_once __DIR__ . '/fortify.php';
 require_once __DIR__ . '/jetstream.php';

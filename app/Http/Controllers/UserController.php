@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -82,6 +83,12 @@ class UserController extends Controller
         return redirect()->back();
     }
     
+
+    public function getRandomPlayerId(){
+        $user =  Auth::user();
+        $randomPlayer = User::where('id', '!=', $user->id)->get('id')->random(1);
+        
+    }
 
     
 }
