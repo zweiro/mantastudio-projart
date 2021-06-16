@@ -78,13 +78,18 @@
                 .catch(function (error) {
                     console.log(error);
                 });
-                this.timeToAnswer = 0;
-                this.answerChoosen = false;
-                this.idChoosenNumber = null;
-                this.question_index++;
-                axios.get('../answer/' + this.questions[this.question_index].id).then(response => {
-                    this.correctAnswer = response.data.id;
-                });
+                console.log(this.question_index);
+                if(this.question_index > 8) {
+                    window.location.replace("../results/" + this.game_id);
+                } else {
+                    this.timeToAnswer = 0;
+                    this.answerChoosen = false;
+                    this.idChoosenNumber = null;
+                    this.question_index++;
+                    axios.get('../answer/' + this.questions[this.question_index].id).then(response => {
+                        this.correctAnswer = response.data.id;
+                    });
+                }
             },
             showAnswersContainer() {
                 this.showAnswers = !this.showAnswers;

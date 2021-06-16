@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Redirect;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 //Carbon::now()->timestamp;
 
@@ -81,9 +82,32 @@ class GameController extends Controller
                 'answers' => $question->questionAnswers()->inRandomOrder()->get(['id','text'])->ToArray()
             ]);
         }
+        
         return Inertia::render('Game', [
             'questions' => $fullQuestions,
             'game_id' => $game->id,
+        ]);
+    }
+
+    public function showResults($gameId) {
+        $game = Game::where('id', $gameId)->first();
+        if($game == null || !$game->players()->where('users.id', Auth::user()->id)->exists()) {
+            return Redirect::route(GameController::GAME_HOME);
+        }
+        $nbRightAnswers = DB::table('game_question_question_answer_user')
+                ->where('game_id', $gameId)
+                ->where('user_id', Auth::user()->id)
+                ->where('points', '!=', 0)
+                ->count();
+            
+        $nbPoints = DB::table('game_question_question_answer_user')
+        ->where('game_id', $gameId)
+        ->where('user_id', Auth::user()->id)
+        ->sum('points');
+        
+        return Inertia::render('Results', [
+            'nbRightAnswers' => $nbRightAnswers,
+            'nbPoints' => $nbPoints,
         ]);
     }
 }

@@ -1,7 +1,13 @@
 <template>
     <div>
         <h1 class="text-4xl mx-auto text-center mb-16">Résultats</h1>
-        <manta-personnal-score class="mt-24" score="8" total="10" avatar="/images/avatar/photoPasseportMarmotte.svg"></manta-personnal-score>
+        <manta-personnal-score class="mt-24" :score="nbRightAnswers" total="10" avatar="/images/avatar/photoPasseportMarmotte.svg"></manta-personnal-score>
+        <div class="flex flex-col">
+            <div class="mx-auto mb-8">
+                <p class="mx-auto">+{{ nbPoints }} Trophés</p>
+            </div>
+        </div>
+        
         <a href="/results/">
             <manta-primary-button class="mt-36">Voir mes gains</manta-primary-button>
         </a>
@@ -12,39 +18,26 @@
 </template>
 
 <script>
-    import JetAuthenticationCard from '@/Jetstream/AuthenticationCard'
     import MantaPrimaryButton from '../Mantastudio/PrimaryButton'
     import { usePage } from '@inertiajs/inertia-vue3'
     import Layout from '../Layouts/AppLayout.vue'
     import MantaPersonnalScore from '../Mantastudio/PersonnalScore'
-    import MantaCityEarnings from '../Mantastudio/CityEarnings'
-    import { computed, ref } from 'vue'
 
     export default {
         layout: Layout,
         components: {
-            JetAuthenticationCard,
             MantaPrimaryButton,
             MantaPersonnalScore,
-            MantaCityEarnings
-
         },
-        data() {
+        setup(props) {
+            const nbRightAnswers = usePage().props.value.nbRightAnswers;
+            const nbPoints = usePage().props.value.nbPoints;
+            console.log(nbRightAnswers);
             return {
-                form: this.$inertia.form({
-                    city_id: 2,
-                    opponent_id: 2
-                })
+                nbRightAnswers,
+                nbPoints
             }
         },
-
-        methods: {
-            submit() {
-                console.log('Hello!');
-                this.form.post(this.route('game'));
-            },
-            
-        }
     }
 </script>
 
