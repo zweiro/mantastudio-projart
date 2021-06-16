@@ -18,6 +18,17 @@ class GameController extends Controller
     public const GAME_HOME = 'start';
     public const GAME_MAX_TIME = 180; // 10 questions x (3 seconds of questions read + 10 seconds for answer + 5 seconds of results)
 
+    public function gameSettings($id = null) {
+        $opponent = User::where('id', $id)->first();
+        if($id != null && $opponent == null) {
+            return Inertia::render('Start');
+        } else {
+            return Inertia::render('Category', [
+                'opponent_id' => $id
+            ]);
+        }
+    }
+
     /**
      *  Initialize a new game with requested question type and players
      *  @param Request Laravel Request's object containing the user's inputs
@@ -26,7 +37,7 @@ class GameController extends Controller
         $game = new Game();
         $game->save();
         $mainPlayer = User::find(Auth::user()->id);
-        if(isset($request->opponent_id)) {
+        if($request->opponent_id != null) {
             $opponent = User::find($request->opponent_id);
         }
         if(isset($request->city_id)) {
@@ -44,7 +55,8 @@ class GameController extends Controller
                 $opponent->id => ['start_time' => null],
             ]);
         }
-        return Inertia::render('Welcome');
+        
+        return redirect()->route('play', ['id' => $game->id]);
     }
 
     public function startGame($gameId) {
@@ -56,7 +68,7 @@ class GameController extends Controller
                 'start_time' => Carbon::now()->timestamp
                 ]);
         }
-        if($game === null || !$isPlayer/* || Carbon::now()->timestamp - $game->players()->wherePivot('user_id', '=', $user)->first()->pivot->start_time > GameController::GAME_MAX_TIME*/) {
+        if($game === null || !$isPlayer || Carbon::now()->timestamp - $game->players()->wherePivot('user_id', '=', $user)->first()->pivot->start_time > GameController::GAME_MAX_TIME) {
             return Redirect::route(GameController::GAME_HOME);
         }
 

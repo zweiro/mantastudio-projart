@@ -6,6 +6,7 @@ use Inertia\Inertia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -33,6 +34,12 @@ class UserController extends Controller
             'friends' => $this->getFriends(),
             'users' => $this->getUsers(),
         ]);
+    }
+
+    public function getRandomPlayerId(){
+        $user =  Auth::user();
+        $randomPlayer = User::where('id', '!=', $user->id)->get('id')->random(1);
+        
     }
 
     
