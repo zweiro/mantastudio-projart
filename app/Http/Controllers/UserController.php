@@ -40,6 +40,12 @@ class UserController extends Controller
         return $requests;
     }
 
+    public function getUserGames() {
+        $user = Auth::user();
+        $games = $user->games()->wherePivot('start_time', null)->get()->ToArray();
+        return $games;
+    }
+
     /**
      * Return the battle choice view with the friends of the current user and the other users
      */
@@ -55,6 +61,7 @@ class UserController extends Controller
             'friends' => $this->getFriends(),
             'users' => $this->getUsers(),
             'requests' => $this->getRequests(),
+            'games' => $this->getUserGames()
         ]);
     }
 

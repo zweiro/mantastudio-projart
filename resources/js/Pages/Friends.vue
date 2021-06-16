@@ -1,6 +1,6 @@
 <template>
     <div>
-        <manta-tabs-menu tab1="Liste" tab2="Activités" tab3="Demandes">
+        <manta-tabs-menu tab1="Liste" tab2="Défis" tab3="Demandes">
             <template v-slot:content1>
                 <manta-tabs-item>
                     <manta-form-search @filter="filterFriends()" id="searchFriends" class="mt-4 mb-4" placeholder="Rechercher un ami" name="friend"></manta-form-search>
@@ -10,7 +10,8 @@
             </template>
             <template v-slot:content2>
                 <manta-tabs-item>
-                    Activités
+                    <h3>Défis</h3>
+                    <manta-challenges-list-item v-for="game in games" avatar="/images/avatar/photoPasseportMarmotte.svg" :key="game.id" :username="game.username" :gameId="game.pivot.game_id"></manta-challenges-list-item>
                 </manta-tabs-item>
             </template>
             <template v-slot:content3>
@@ -39,6 +40,7 @@
     import MantaFriendsListItem from '../Mantastudio/FriendsListItem'
     import MantaUsersListItem from '../Mantastudio/UsersListItem'
     import MantaRequestsListItem from '../Mantastudio/RequestsListItem'
+    import MantaChallengesListItem from '../Mantastudio/ChallengesListItem'
     import MantaFormSearch from '../Mantastudio/FormSearch'
     
     
@@ -54,7 +56,8 @@
             MantaFriendsListItem,
             MantaFormSearch,
             MantaUsersListItem,
-            MantaRequestsListItem
+            MantaRequestsListItem,
+            MantaChallengesListItem
 
         },
         setup(props) {
@@ -63,12 +66,14 @@
             const users = null;
             const userList = usePage().props.value.users;
             const requests = usePage().props.value.requests;
+            const games = usePage().props.value.games;
             return {
                 friends: ref(friends),
                 friendList,
                 userList,
                 users: ref(users),
                 requests: ref(requests),
+                games,
             }
         },
         data() {
@@ -121,7 +126,10 @@
             refuseRequest(request){
                 let index = this.requests.indexOf(request);
                 this.requests.splice(index, 1);
-            }
+            },
+            acceptGame(game){
+                console.log("GAMMMME !!!!");
+            },
 
             
             
