@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\NotificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,19 +18,25 @@ use App\Http\Controllers\UserController;
 |
 */
 
+//PUBLIC ROUTES
 Route::get('/', function () {
-    return Inertia::render('Soon');
+    return Inertia::render('Welcome');
 });
 Route::get('/rules', function () {
     return Inertia::render('Rules');
 })->name('rules');;
-Route::get('/start', function () {
-    return Inertia::render('Welcome');
-});
 
+//AUTH ROUTES
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->name('dashboard');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('start', function () {
+    return Inertia::render('Start');
+})->name('start');
+
+Route::get('/notify/{id}', [NotificationController::class, 'notify']);
+Route::get('/get-notifs', [NotificationController::class, 'getNotifications']);
 
 Route::get('game', function () {
     return Inertia::render('Game');
@@ -40,9 +47,6 @@ Route::get('start/category', function () {
     return Inertia::render('Category');
 });
 
-Route::get('start', function () {
-    return Inertia::render('Start');
-})->name('start');
 
 Route::get('start/battle', [UserController::class, 'getFriends']);
 

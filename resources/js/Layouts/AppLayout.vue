@@ -1,9 +1,15 @@
 <template>
     <div class="mantasettings">
-        <manta-header>
+        <manta-header class="z-10">
+            <li class="p-4 self-center"><manta-friend-request></manta-friend-request></li>
+            <li class="p-4 self-center"><manta-friend-request></manta-friend-request></li>
+            <li class="p-4 self-center"><manta-friend-request></manta-friend-request></li>
+            <li class="p-4 self-center"><manta-friend-request></manta-friend-request></li>
+            <li class="p-4 self-center"><manta-friend-request></manta-friend-request></li>
+            <li class="p-4 self-center"><manta-friend-request></manta-friend-request></li>
         </manta-header>
 
-        <div class="min-h-screen">
+        <div class="min-h-screen z-5">
             
 
             <!-- Page Content -->
@@ -26,6 +32,7 @@
     import JetResponsiveNavLink from '@/Jetstream/ResponsiveNavLink'
     import MantaHeader from '../Mantastudio/MainHeader'
     import MantaMenu from '../Mantastudio/BottomMenu'
+    import MantaFriendRequest from '../Mantastudio/FriendRequest'
 
     export default {
         components: {
@@ -37,6 +44,7 @@
             JetResponsiveNavLink,
             MantaHeader,
             MantaMenu,
+            MantaFriendRequest,
         },
         data() {
             return {

@@ -17,6 +17,9 @@ class CreateFriendUserTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->unsignedBigInteger('friend_id');
+            $table->unsignedBigInteger('request_user_id');
+            $table->boolean('isAccepted')->default(false);
+            $table->foreign('request_user_id')->references('id')->on('users');
             $table->foreign('friend_id')->references('id')->on('users');
         });
     }
@@ -31,6 +34,7 @@ class CreateFriendUserTable extends Migration
         Schema::table('friend_user', function (Blueprint $table) {
             $table->dropForeign(['friend_id']);
             $table->dropForeign(['user_id']);
+            $table->dropForeign(['request_user_id']);
         });
         
         Schema::dropIfExists('friend_user');

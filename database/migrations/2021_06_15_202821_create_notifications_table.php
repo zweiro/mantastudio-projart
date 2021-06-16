@@ -1,9 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateNotificationsTable extends Migration
 {
@@ -15,12 +14,11 @@ class CreateNotificationsTable extends Migration
     public function up()
     {
         Schema::create('notifications', function (Blueprint $table) {
-            $table->id();
-            $table->string('text');
-            $table->string('link');
+            $table->uuid('id')->primary();
             $table->string('type');
-            $table->boolean('read');
-            $table->foreignId('user_id')->constrained();
+            $table->morphs('notifiable');
+            $table->text('data');
+            $table->timestamp('read_at')->nullable();
             $table->timestamps();
         });
     }
@@ -32,11 +30,6 @@ class CreateNotificationsTable extends Migration
      */
     public function down()
     {
-        if (DB::getDriverName() !== 'sqlite') {
-            Schema::table('notifications', function (Blueprint $table) {
-                $table->dropForeign(['user_id']);
-            });
-        }
         Schema::dropIfExists('notifications');
     }
 }

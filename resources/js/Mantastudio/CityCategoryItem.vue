@@ -1,5 +1,5 @@
 <template>
-    <a class="card relative mr-4 w-48">
+    <a class="card mr-4 w-48">
         <div class="relative w-full">
             <img class="" :src="src" :alt="alt">
             <div class="absolute top-0 left-0 pt-2 ml-2 text-center text-xl font-bold">
