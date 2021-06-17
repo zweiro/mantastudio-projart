@@ -9,9 +9,9 @@
     <manta-category-container>
         <manta-category-item src="/images/categories/categorie_mobile_art.svg" alt="Art et Culture" categoryName="Art et Culture" @categorySelected="selectCategory(2)">
         </manta-category-item>
-        <manta-category-item src="/images/categories/categorie_mobile_gastronomie.svg" alt="Histoire" categoryName="Histoire" @categorySelected="selectCategory(3)">
+        <manta-category-item src="/images/categories/categorie_mobile_histoire.svg" alt="Histoire" categoryName="Histoire" @categorySelected="selectCategory(3)">
         </manta-category-item>
-        <manta-category-item src="/images/categories/categorie_mobile_histoire.svg" alt="Gastronomie" categoryName="Gastronomie" @categorySelected="selectCategory(1)">
+        <manta-category-item src="/images/categories/categorie_mobile_gastronomie.svg" alt="Gastronomie" categoryName="Gastronomie" @categorySelected="selectCategory(1)">
         </manta-category-item>
     </manta-category-container>
     
