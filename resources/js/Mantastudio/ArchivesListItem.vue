@@ -1,29 +1,31 @@
 <template>
-    <div class="flex grayBackground py-2 items-cente m-auto border-t-2 border-black">
+    <div class="opacity-75  flex grayBackground py-2 items-cente m-auto border-t-2 border-black">
         <img class="flex-none w-12 h-12 ml-4 bg-gray-800 rounded-full" :src="avatar" alt="avatar"/>
         <div class="flex-grow h-12 text-center text-xl font-medium flex flex-col justify-center items-start">
             <div class="ml-4">{{username}}</div>
         </div>
-        <inertia-link :href="link" method="get">
-            <img class="flex-none w-12 h-12 mr-4" src="/images/friendlist/bataille.svg"/>
-        </inertia-link>
+        <a :href="game">
+            <img class="opacity-100 flex-none w-12 h-12 mr-4" src="/images/form/loupe.svg"/>
+        </a>
     </div>
 </template>
 
 <script>
+import { computed, ref } from 'vue'
 export default {
     props: {
         avatar: String,
         username: String,
         link: String,
-        friendId: Number
+        gameId: Number,
     },
-    setup(props) {  
+    setup(props) { 
+        const game = computed(() => "/results/" + props.gameId);
         return {
             avatar: props.avatar,
             username: props.username,
-            link: props.link,
-            friendId: props.friendId
+            gameId: props.gameId,
+            game
         }
     }
     

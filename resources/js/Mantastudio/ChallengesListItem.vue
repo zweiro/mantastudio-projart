@@ -5,7 +5,7 @@
             <div class="ml-4">{{username}}</div>
         </div>
         <a :href="game">
-            <img class="flex-none w-5 h-5 mr-2" src="/images/friendlist/vunoir.svg"/>
+            <img class="flex-none w-12 h-12 mr-4" src="/images/friendlist/vunoir.svg"/>
         </a>
     </div>
 </template>
@@ -21,7 +21,6 @@ export default {
         gameId: Number,
     },
     setup(props) { 
-        console.log("/play/" + props.gameId); 
         const game = computed(() => "/play/" + props.gameId);
         return {
             avatar: props.avatar,

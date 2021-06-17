@@ -4,13 +4,14 @@
         <div class="flex-grow h-12 text-center text-xl font-medium flex flex-col justify-center items-start">
             <div class="ml-4">{{username}}</div>
         </div>
-        <inertia-link @click="$emit('accept')" class="flex-none w-5 h-5 mr-2 text-center text-xl font-medium flex flex-col justify-center items-end" :href="linkYes" method="post" :data="{ user: userId }">
-            <img class="flex-none w-5 h-5 mr-2" src="/images/friendlist/vunoir.svg"/>
+        <inertia-link @click="$emit('accept')" :href="linkYes" method="post" :data="{ user: userId }">
+            <img class="flex-none w-12 h-12 mr-4" src="/images/friendlist/vunoir.svg"/>
         </inertia-link>
-        <inertia-link @click="$emit('refuse')" class="flex-none w-5 h-5 mr-2 text-center text-xl font-medium flex flex-col justify-center items-end" :href="linkNo" method="post" :data="{ user: userId }">
-            <img class="flex-none w-5 h-5 mr-2" src="/images/friendlist/Xnoir.svg"/>
+        <inertia-link @click="$emit('refuse')" :href="linkNo" method="post" :data="{ user: userId }">
+            <img class="flex-none w-12 h-12 mr-4" src="/images/friendlist/Xnoir.svg"/>
         </inertia-link>
     </div>
+    
 </template>
 
 <script>
