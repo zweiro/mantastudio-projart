@@ -22,7 +22,6 @@
             const scores = usePage().props.value.scores;
             const currentUser = usePage().props.value.current_user;
             let currentUserRank = ref(1);
-            console.log(scores[1]['username']);
             while(currentUser != scores[currentUserRank.value-1]['username']){
                 currentUserRank.value++;
             }

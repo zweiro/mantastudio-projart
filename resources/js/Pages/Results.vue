@@ -35,7 +35,6 @@
             const nbPoints = usePage().props.value.nbPoints;
             const game_id = usePage().props.value.game_id;
             const gainLink = computed(() => "/gains/" + game_id);
-            console.log(nbRightAnswers);
             return {
                 nbRightAnswers,
                 nbPoints,

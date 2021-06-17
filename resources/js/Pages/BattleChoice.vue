@@ -37,7 +37,6 @@
             const friendList = usePage().props.value.friends;
             const users = usePage().props.value.users;
             const currentUser = usePage().props.value.user;
-            console.log(users);
             return {
                 friends: ref(friends),
                 friendList,
@@ -56,7 +55,6 @@
 
         methods: {
             submit() {
-                console.log('Hello!');
                 this.form.post(this.route('game'));
             },
             randomId() {
