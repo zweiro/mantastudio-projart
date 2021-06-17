@@ -51,10 +51,10 @@ question_answers
 | 10'000 hl                                                   | 0       | 41          |
 | 40'000 hl                                                   | 1       | 41          |
 | 70'000 hl                                                   | 0       | 41          |
-| Louis XVI                                                   | 0       | 49          |
-| Roi de Prusse                                               | 1       | 49          |
-| Napoléon Bonaparte                                         | 0       | 49          |
-| Henri VIII d'Angleterre                                     | 0       | 49          |
+| Louis XVI                                                   | 0       | 48          |
+| Roi de Prusse                                               | 1       | 48          |
+| Napoléon Bonaparte                                         | 0       | 48          |
+| Henri VIII d'Angleterre                                     | 0       | 48          |
 | Elle est constituée de 3 fromages                          | 1       | 42          |
 | Le vin est de l'Oeil-de-perdrix                             | 0       | 42          |
 | Il y a du fromage de chèvre                                | 0       | 42          |
@@ -256,5 +256,9 @@ ordinaire dans une université suisse | 1       | 61          |
 | Jeux Occidentaux de Jass                                    | 0       | 32          |
 | Jeux Orientaux de Jonglage                                  | 0       | 32          |
 | Jogging Obligatoire à la Japonaise                         | 0       | 32          |
-(252 rows)
+| Défilé militaire                                          | 0       | 7           |
+| Faire pousser un palmier                                    | 0       | 7           |
+| Guet de la Cathédrale                                      | 1       | 7           |
+| Marathon de Lausanne                                        | 0       | 7           |
+(256 rows)
 
