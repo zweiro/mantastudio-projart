@@ -11,7 +11,7 @@
             <template v-slot:content2>
                 <manta-tabs-item>
                     <h3>Défis</h3>
-                    <manta-challenges-list-item v-for="game in games" avatar="/images/avatar/photoPasseportMarmotte.svg" :key="game.id" :username="game.username" :gameId="game.pivot.game_id"></manta-challenges-list-item>
+                    <manta-challenges-list-item v-for="game in games" avatar="/images/avatar/photoPasseportMarmotte.svg" :key="game[0].game_id" :username="game[0].username" :gameId="game[0].game_id"></manta-challenges-list-item>
                 </manta-tabs-item>
             </template>
             <template v-slot:content3>
@@ -67,6 +67,10 @@
             const userList = usePage().props.value.users;
             const requests = usePage().props.value.requests;
             const games = usePage().props.value.games;
+
+            games.forEach(element => {
+                console.log(element[0].username);
+            });
             return {
                 friends: ref(friends),
                 friendList,

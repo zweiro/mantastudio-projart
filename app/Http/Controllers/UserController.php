@@ -41,8 +41,30 @@ class UserController extends Controller
     }
 
     public function getUserGames() {
-        $user = Auth::user();
-        $games = $user->games()->wherePivot('start_time', null)->get()->ToArray();
+        $currentUser = Auth::user();
+        $games = [];
+
+        $allGames = DB::table('game_user')
+            ->join('users', 'game_user.user_id', '=', 'users.id')
+            ->select('users.username', 'game_user.user_id', 'game_user.game_id', 'game_user.start_time')
+            ->where('users.username', $currentUser->username)
+            ->where('game_user.start_time', null)
+            ->get();
+
+        foreach($allGames as $game){
+            $challenge = DB::table('game_user')
+            ->join('users', 'game_user.user_id', '=', 'users.id')
+            ->select('users.username', 'game_user.user_id', 'game_user.game_id', 'game_user.start_time')
+            ->where('game_user.game_id', $game->game_id)
+            ->where('users.username', '!=', $currentUser->username)
+            ->get();
+
+            $games[] = $challenge->toArray();
+
+        }
+        
+        //dd($games);
+        
         return $games;
     }
 
