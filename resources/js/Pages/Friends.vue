@@ -75,9 +75,6 @@
             const games = usePage().props.value.games;
             const archives = usePage().props.value.archives;
 
-            archives.forEach(element => {
-                console.log(element[0].username);
-            });
             return {
                 friends: ref(friends),
                 friendList,
