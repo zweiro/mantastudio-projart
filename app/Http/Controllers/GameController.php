@@ -20,6 +20,10 @@ class GameController extends Controller
     public const GAME_MAX_TIME = 180; // 10 questions x (3 seconds of questions read + 10 seconds for answer + 5 seconds of results)
     public const SEASON_GOAL = 50;
 
+    /**
+     * Show Category or City selection vue
+     * @param id of the opponent
+     */
     public function gameSettings($id = null) {
         $opponent = User::where('id', $id)->first();
         if($id != null && $opponent == null) {
@@ -80,6 +84,10 @@ class GameController extends Controller
         return redirect()->route('play', ['id' => $game->id]);
     }
 
+    /**
+     * Start the game
+     * @param gameId Id of the game to start
+     */
     public function startGame($gameId) {
         $user = Auth::user()->id;
         $game = Game::find($gameId);
@@ -109,6 +117,10 @@ class GameController extends Controller
         ]);
     }
 
+    /**
+     * Show the results of a given name
+     * @param gameId id of the game we want the result
+     */
     public function showResults($gameId) {
         $game = Game::where('id', $gameId)->first();
         if($game == null || !$game->players()->where('users.id', Auth::user()->id)->exists()) {
@@ -132,6 +144,10 @@ class GameController extends Controller
         ]);
     }
 
+    /**
+     * Show player gaines for the given game
+     * @param gameId id of the wanted game gaines
+     */
     public function showGains($gameId) {
         $game = Game::where('id', $gameId)->first();
 
@@ -181,12 +197,18 @@ class GameController extends Controller
         ]);
     }
 
+    /**
+     * callback method to sort the ranking
+     */
     public function scoreCmp($a,$b) {
         if((int)$a['score'] == (int)$b['score'])return 0;
         if((int)$a['score']  > (int)$b['score'])return 1;
         if((int)$a['score']  < (int)$b['score'])return -1;
     }
 
+    /**
+     * Show ranking vue
+     */
     public function getRanking() {
         $rankedGamesIds = array();
         $games = Game::all();
@@ -201,9 +223,6 @@ class GameController extends Controller
                 array_push($rankedGamesIds, $game->id);
             }
         }
-        /*$rankedGames = DB::table('game_question_question_answer_user')
-        ->whereIn('game_id', $rankedGamesIds)
-        ->get();*/
         $playerScore = array();
         foreach (User::all() as $user) {
             $playerScore[$user->id] = [
