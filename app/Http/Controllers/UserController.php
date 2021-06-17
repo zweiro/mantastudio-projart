@@ -139,6 +139,7 @@ class UserController extends Controller
 
     /**
      * Accept and update a friends request
+     * @param Request Laravel Request's object containing the targeted user
      */
     public function acceptFriend(Request $request) {
         $user = Auth::user();
@@ -150,6 +151,7 @@ class UserController extends Controller
 
     /**
      * Refuse and delete a friends request
+     * @param Request Laravel Request's object containing the targeted user
      */
     public function refuseFriend(Request $request) {
         $user = Auth::user();
