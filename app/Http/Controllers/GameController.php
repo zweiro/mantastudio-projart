@@ -180,4 +180,75 @@ class GameController extends Controller
             'neuchatel_percent' => $neuchatel_percent
         ]);
     }
+
+    public function scoreCmp($a,$b) {
+        if((int)$a['score'] == (int)$b['score'])return 0;
+        if((int)$a['score']  > (int)$b['score'])return 1;
+        if((int)$a['score']  < (int)$b['score'])return -1;
+    }
+
+    public function getRanking() {
+        $rankedGamesIds = array();
+        $games = Game::all();
+        foreach ($games as $game) {
+            $gameFinished = true;
+            foreach ($game->players()->get() as $player) {
+                if($game->players()->wherePivot('user_id', '=', $player->id)->first()->pivot->start_time === null || Carbon::now()->timestamp-$game->players()->wherePivot('user_id', '=', $player->id)->first()->pivot->start_time < GameController::GAME_MAX_TIME) {
+                    $gameFinished = false;
+                }
+            }
+            if($gameFinished && $game->players()->count() > 1){
+                array_push($rankedGamesIds, $game->id);
+            }
+        }
+        $rankedGames = DB::table('game_question_question_answer_user')
+        ->whereIn('game_id', $rankedGamesIds)
+        ->get();
+        $playerScore = array();
+        foreach (User::all() as $user) {
+            $playerScore[$user->id] = [
+                'username' => $user->username,
+                'score' => 0,
+                'current_user' => $user->id == Auth::user()->id ? 1 : 0
+            ];
+        }
+        foreach (User::all() as $user) {
+            $battleGames = Game::whereIn('id', $rankedGamesIds)->get();
+            foreach ($battleGames as $battleGame) {
+                if($battleGame->players()->wherePivot('user_id', $user->id)->exists()) {
+                    $player_points = DB::table('game_question_question_answer_user')
+                    ->where('game_id', $battleGame->id)
+                    ->where('user_id', $user->id)
+                    ->sum('points');
+
+                    
+                    $opponent_points = DB::table('game_question_question_answer_user')
+                    ->where('game_id', $battleGame->id)
+                    ->where('user_id', '!=', $user->id)
+                    ->sum('points');
+                    
+                    if($player_points > $opponent_points) {
+                        $playerScore[$user->id]['score'] += $player_points;
+                    } else {
+                        if($playerScore[$user->id]['score'] - ($opponent_points-$player_points) <= 0) {
+                            $playerScore[$user->id]['score'] = 0;
+                        } else {
+                            $playerScore[$user->id]['score'] -= ($opponent_points-$player_points);
+                        }
+                    }
+                }
+            }
+        }
+        usort($playerScore,function($a,$b){
+            if((int)$a['score'] == (int)$b['score'])return 0;
+            if((int)$a['score']  > (int)$b['score'])return -1;
+            if((int)$a['score']  < (int)$b['score'])return 1;
+        });
+        
+        return Inertia::render('Ranking', [
+            'scores' => $playerScore,
+        ]);
+
+        
+    }
 }

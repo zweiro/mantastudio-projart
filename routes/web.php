@@ -53,6 +53,7 @@ Route::middleware(['auth:sanctum', 'verified'])->post('friends/accept', [UserCon
 Route::middleware(['auth:sanctum', 'verified'])->post('friends/refuse', [UserController::class, 'refuseFriend']);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('start/battle', [UserController::class, 'showBattleFriends']);
+Route::middleware(['auth:sanctum', 'verified'])->get('ranking', [GameController::class, 'getRanking']);
 
 //TESTS
 Route::middleware(['auth:sanctum', 'verified'])->get('/notify/{id}', [NotificationController::class, 'notify']);
