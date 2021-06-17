@@ -14,7 +14,7 @@ class RewardsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('rewards')->delete();
+        /*DB::table('rewards')->delete();
         DB::table('rewards')->insert([
             'date_start' => '2021-06-01 00:00:00',
             'date_end' => '2021-12-31 23:59:59',
@@ -38,6 +38,6 @@ class RewardsTableSeeder extends Seeder
             'validity_date' => '2022-06-30 24:59:59',
             'question_category_id' => '3',
             'city_id' => '5',
-        ]);
+        ]);*/
     }
 }
