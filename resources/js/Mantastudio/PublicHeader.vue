@@ -1,6 +1,6 @@
 <template>
   <div class="w-full flex items-center justify-center fixed top-0 h-20 border-t-2 border-gray-500 px-5 sm:px-10 mantacolor">
-      <inertia-link href="/"><img src="/images/header/logo_reponzi.svg" alt="menu de l'application reponzi" id="logo"></inertia-link>
+      <inertia-link href="/mantastudio"><img src="/mantastudio/images/header/logo_reponzi.svg" alt="menu de l'application reponzi" id="logo"></inertia-link>
   </div>
 </template>
 
