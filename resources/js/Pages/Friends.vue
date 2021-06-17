@@ -101,7 +101,7 @@
             },
             filterFriends(){
                 let content = document.getElementById("searchFriends").value;
-                const filteredFriends = this.friendList.filter(friend => friend.username.includes(content));
+                const filteredFriends = this.friendList.filter(friend => friend.username.toLowerCase().includes(content.toLowerCase()));
                 if(content == "") {
                     this.friends = this.friendList;
                 }
@@ -112,7 +112,7 @@
             },
             filterUsers(){
                 let content = document.getElementById("searchUsers").value;
-                const filteredUsers = this.userList.filter(user => user.username.includes(content));
+                const filteredUsers = this.userList.filter(user => user.username.toLowerCase().includes(content.toLowerCase()));
                 if(content == "") {
                     this.users = null;
                 }
@@ -136,11 +136,6 @@
                 let index = this.requests.indexOf(request);
                 this.requests.splice(index, 1);
             },
-            acceptGame(game){
-                console.log("GAMMMME !!!!");
-            },
-
-            
             
         }
     }
