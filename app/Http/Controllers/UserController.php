@@ -32,7 +32,7 @@ class UserController extends Controller
     }
     
     /**
-     * Return all the friend requests from the current user
+     * Return all the friend requests of the current user
      */
     public function getRequests() {
         $user = Auth::user();
@@ -40,6 +40,9 @@ class UserController extends Controller
         return $requests;
     }
 
+    /**
+     * Return all the not started games of the current user
+     */
     public function getUserGames() {
         $currentUser = Auth::user();
         $games = [];
@@ -66,6 +69,9 @@ class UserController extends Controller
         return $games;
     }
 
+    /**
+     * Return all the games archives of the current user
+     */
     public function getUserArchives() {
         $currentUser = Auth::user();
         $games = [];
@@ -90,7 +96,6 @@ class UserController extends Controller
             $games[] = $challenge->toArray();
 
         }
-        //dd($games);
         
         return $games;
 
@@ -108,6 +113,9 @@ class UserController extends Controller
         ]);
     }
 
+    /**
+     * Return all the friends and games data to the Friends view
+     */
     public function showFriendsList() {
         return Inertia::render('Friends', [
             'friends' => $this->getFriends(),
@@ -118,6 +126,9 @@ class UserController extends Controller
         ]);
     }
 
+    /**
+     * Create and send a friends request
+     */
     public function askFriend(Request $request) {
         $user = Auth::user();
         $friend = User::where('id', $request->get('user'))->first();
@@ -126,6 +137,9 @@ class UserController extends Controller
         return redirect()->back();
     }
 
+    /**
+     * Accept and update a friends request
+     */
     public function acceptFriend(Request $request) {
         $user = Auth::user();
         $friend = User::where('id', $request->get('user'))->first();
@@ -134,6 +148,9 @@ class UserController extends Controller
         return redirect()->back();
     }
 
+    /**
+     * Refuse and delete a friends request
+     */
     public function refuseFriend(Request $request) {
         $user = Auth::user();
         $friend = User::where('id', $request->get('user'))->first();
@@ -143,6 +160,9 @@ class UserController extends Controller
     }
     
 
+    /**
+     * Generate a random user id
+     */
     public function getRandomPlayerId(){
         $user =  Auth::user();
         $randomPlayer = User::where('id', '!=', $user->id)->get('id')->random(1);
