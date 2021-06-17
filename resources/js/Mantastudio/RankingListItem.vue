@@ -13,7 +13,7 @@ export default {
         rank: Number,
         avatar: String,
         username: String,
-        points: String
+        points: Number
     },
     setup(props) {  
         return {

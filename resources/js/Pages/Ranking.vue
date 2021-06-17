@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1 class="text-4xl mx-auto text-center mb-16">Classement</h1>
-        <manta-ranking-list-item class="blueBackground mb-16" avatar="/images/avatar/photoPasseportMarmotte.svg" :rank="currentUserRank" :username="currentUser" :points="+scores[0]['score']"></manta-ranking-list-item>
+        <manta-ranking-list-item class="blueBackground mb-16" avatar="/images/avatar/photoPasseportMarmotte.svg" :rank="currentUserRank" :username="currentUser" :points="+scores[currentUserRank-1]['score']"></manta-ranking-list-item>
         <manta-ranking-list-item v-for="(score, index) in scores" :key="index" avatar="/images/avatar/photoPasseportMarmotte.svg" :rank="index+1" :username="score['username']" :points="+score['score']"></manta-ranking-list-item>
     </div>
 </template>
@@ -22,9 +22,11 @@
             const scores = usePage().props.value.scores;
             const currentUser = usePage().props.value.current_user;
             let currentUserRank = ref(1);
+            console.log(scores[1]['username']);
             while(currentUser != scores[currentUserRank.value-1]['username']){
-                currentUserRank++;
+                currentUserRank.value++;
             }
+            
             return {
                 currentUser,
                 scores,
