@@ -17,7 +17,7 @@
                 <option v-for="canton in cantons" :key="canton.id" :value="canton.id">{{ canton.name }}</option>
             </manta-form-select>
             <div class="relative h-20">
-                <manta-primary-button class="m-0 absolute top-2/4 left-2/4 transform -translate-x-2/4 -translate-y-2/4">
+                <manta-primary-button>
                     Je m'inscris
                 </manta-primary-button>
             </div>
