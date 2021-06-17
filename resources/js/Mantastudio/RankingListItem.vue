@@ -1,5 +1,5 @@
 <template>
-    <div class="flex grayBackground py-2 items-cente m-auto border-b-2 border-t-2 border-black">
+    <div class="flex grayBackground py-2 items-cente m-auto border-t-2 border-black">
         <div class="flex-none w-12 h-12 text-center text-3xl flex flex-col justify-center font-semibold">#{{rank}}</div>
         <img class="flex-none w-12 h-12 ml-4 bg-gray-800 rounded-full" :src="avatar" alt="avatar"/>
         <div class="ml-4 flex-grow h-12 text-center text-xl font-medium flex flex-col justify-center items-start">{{username}}</div>
@@ -28,6 +28,10 @@ export default {
 </script>
 
 <style scoped>
+    .blueBackground {
+        background-color: #6BAEBE;
+    }
+
     .grayBackground {
         background-color: #F0EFF0;
     }
