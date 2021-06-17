@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\DB;
 
 class QuestionController extends Controller
 {
+    /**
+     * return the answer of a given question
+     * @param questionID question id
+     */
     public function getAnswer($questionId){
         $user =  Auth::user();
         $games = $user->games()->wherePivot('user_id', '=', $user->id)->get();
@@ -21,7 +25,11 @@ class QuestionController extends Controller
         }
         abort(403);
     }
-
+    
+    /**
+     * Define the user's answer for an answer
+     * @param Request Laravel Request's object containing the user's inputs
+     */
     public function setUserAnswer(Request $request) {
         DB::table('game_question_question_answer_user')->insert([
             'game_id' => $request->game_id,
