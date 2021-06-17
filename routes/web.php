@@ -31,9 +31,6 @@ Route::get('/rules', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('start', function () {
     return Inertia::render('Start');
 })->name('start');
-Route::middleware(['auth:sanctum', 'verified', 'admin'])->get('/test', function () {
-    return "Bienvenue !";
-})->name('start');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('start/battle', [UserController::class, 'showBattleFriends']);
 Route::middleware(['auth:sanctum', 'verified'])->post('set-user-answer', [QuestionController::class, 'setUserAnswer']);

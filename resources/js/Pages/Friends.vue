@@ -96,7 +96,6 @@
 
         methods: {
             submit() {
-                console.log('Hello!');
                 this.form.post(this.route('game'));
             },
             filterFriends(){
