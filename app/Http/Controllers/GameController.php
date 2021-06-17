@@ -201,9 +201,9 @@ class GameController extends Controller
                 array_push($rankedGamesIds, $game->id);
             }
         }
-        $rankedGames = DB::table('game_question_question_answer_user')
+        /*$rankedGames = DB::table('game_question_question_answer_user')
         ->whereIn('game_id', $rankedGamesIds)
-        ->get();
+        ->get();*/
         $playerScore = array();
         foreach (User::all() as $user) {
             $playerScore[$user->id] = [
@@ -244,8 +244,8 @@ class GameController extends Controller
             if((int)$a['score']  > (int)$b['score'])return -1;
             if((int)$a['score']  < (int)$b['score'])return 1;
         });
-        
         return Inertia::render('Ranking', [
+            'current_user' => Auth::user()->username,
             'scores' => $playerScore,
         ]);
 

@@ -10,7 +10,7 @@
 <script>
 export default {
     props: {
-        rank: String,
+        rank: Number,
         avatar: String,
         username: String,
         points: String

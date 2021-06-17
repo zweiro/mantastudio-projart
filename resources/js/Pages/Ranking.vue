@@ -1,9 +1,8 @@
 <template>
     <div>
         <h1 class="text-4xl mx-auto text-center mb-16">Classement</h1>
-        <manta-ranking-list-item class="blueBackground mb-16" avatar="/images/avatar/photoPasseportMarmotte.svg" rank="3" username="Givros" points="57"></manta-ranking-list-item>
-        <manta-ranking-list-item avatar="/images/avatar/photoPasseportMarmotte.svg" rank="1" username="Grieff" points="89"></manta-ranking-list-item>
-        <manta-ranking-list-item avatar="/images/avatar/photoPasseportMarmotte.svg" rank="2" username="Ali" points="72"></manta-ranking-list-item>
+        <manta-ranking-list-item class="blueBackground mb-16" avatar="/images/avatar/photoPasseportMarmotte.svg" :rank="currentUserRank" :username="currentUser" :points="+scores[0]['score']"></manta-ranking-list-item>
+        <manta-ranking-list-item v-for="(score, index) in scores" :key="index" avatar="/images/avatar/photoPasseportMarmotte.svg" :rank="index+1" :username="score['username']" :points="+score['score']"></manta-ranking-list-item>
     </div>
 </template>
 
@@ -11,7 +10,7 @@
     import { usePage } from '@inertiajs/inertia-vue3'
     import Layout from '../Layouts/AppLayout.vue'
     import MantaRankingListItem from '../Mantastudio/RankingListItem'
-    import { computed, ref } from 'vue'
+    import { ref } from 'vue'
 
     export default {
         layout: Layout,
@@ -19,22 +18,19 @@
             MantaRankingListItem
 
         },
-        data() {
+        setup() {
+            const scores = usePage().props.value.scores;
+            const currentUser = usePage().props.value.current_user;
+            let currentUserRank = ref(1);
+            while(currentUser != scores[currentUserRank.value-1]['username']){
+                currentUserRank++;
+            }
             return {
-                form: this.$inertia.form({
-                    city_id: 2,
-                    opponent_id: 2
-                })
+                currentUser,
+                scores,
+                currentUserRank
             }
         },
-
-        methods: {
-            submit() {
-                console.log('Hello!');
-                this.form.post(this.route('game'));
-            },
-            
-        }
     }
 </script>
 
